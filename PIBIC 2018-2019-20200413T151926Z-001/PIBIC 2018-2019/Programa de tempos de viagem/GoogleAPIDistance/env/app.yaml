@@ -1,0 +1,16 @@
+runtime: python37
+api_version: 1
+application: indicador-de-mobilidade
+version: v1
+
+
+instance_class: F2
+
+env_variables:
+  MYSQL_DSN: mysql:unix_socket=/cloudsql/ indicador-de-mobilidade:us-east1:indicador-de-mobilidade2;dbname=DATABASE
+  MYSQL_USER: root
+  MYSQL_PASSWORD: '654753rol'
+
+handlers:
+# Matches requests to /images/... to files in static/images/...
+

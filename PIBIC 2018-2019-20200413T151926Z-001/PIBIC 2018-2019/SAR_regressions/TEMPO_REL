@@ -1,0 +1,1136 @@
+>>07/27/19 19:18:36
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    5
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   91
+Lag coeff.   (Rho)  :    0.745058
+
+R-squared           :    0.669616  Log likelihood        :     42.0364
+Sq. Correlation     : -            Akaike info criterion :    -74.0728
+Sigma-square        :   0.0207574  Schwarz criterion     :    -61.2511
+S.E of regression   :    0.144074
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.745058      0.0671267        11.0993     0.00000
+          CONSTANT      0.529982       0.172999         3.0635     0.00219
+         PDOMM2010      0.341544       0.115849        2.94817     0.00320
+          DUMMETRO     -0.146594      0.0333705       -4.39294     0.00001
+           DUMCPTM    -0.0638153      0.0304845       -2.09337     0.03632
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       3         2.2426     0.52361
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        62.2511     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:32
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.745344
+
+R-squared           :    0.669718  Log likelihood        :     42.0432
+Sq. Correlation     : -            Akaike info criterion :    -72.0864
+Sigma-square        :    0.020751  Schwarz criterion     :    -56.7003
+S.E of regression   :    0.144052
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.745344      0.0672448         11.084     0.00000
+          CONSTANT      0.514425       0.207582        2.47818     0.01321
+         PDOMM2010      0.356013       0.171628        2.07432     0.03805
+          DUMMETRO     -0.144882      0.0360636        -4.0174     0.00006
+           DUMCPTM    -0.0643421      0.0308523       -2.08549     0.03703
+        PNBRAN2010     0.0198106       0.170407       0.116254     0.90745
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.6779     0.61308
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        62.2346     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:29
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.741444
+
+R-squared           :    0.671326  Log likelihood        :     42.3864
+Sq. Correlation     : -            Akaike info criterion :    -72.7728
+Sigma-square        :     0.02065  Schwarz criterion     :    -57.3867
+S.E of regression   :    0.143701
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.741444      0.0682111        10.8699     0.00000
+          CONSTANT      0.557219        0.18087        3.08077     0.00206
+         PDOMM2010       0.31663       0.119236        2.65548     0.00792
+          DUMMETRO      -0.13436      0.0360715       -3.72484     0.00020
+           DUMCPTM    -0.0620963      0.0304379        -2.0401     0.04134
+         DENLINBUS  -0.000772668    0.000938775       -0.82306     0.41047
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.8189     0.58857
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.6292     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:24
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.737485
+
+R-squared           :    0.670600  Log likelihood        :     42.3896
+Sq. Correlation     : -            Akaike info criterion :    -72.7793
+Sigma-square        :   0.0206956  Schwarz criterion     :    -57.3932
+S.E of regression   :     0.14386
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.737485      0.0686765        10.7385     0.00000
+          CONSTANT      0.492138       0.174784         2.8157     0.00487
+         PDOMM2010      0.318295       0.119439        2.66492     0.00770
+          DUMMETRO     -0.138208      0.0347176       -3.98091     0.00007
+           DUMCPTM    -0.0610168      0.0305743       -1.99569     0.04597
+         PDOMC2010      0.756704       0.910043       0.831503     0.40569
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         5.3936     0.24925
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        60.2210     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:21
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.737247
+
+R-squared           :    0.671244  Log likelihood        :     42.4901
+Sq. Correlation     : -            Akaike info criterion :    -72.9801
+Sigma-square        :   0.0206552  Schwarz criterion     :    -57.5941
+S.E of regression   :    0.143719
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.737247      0.0687366        10.7257     0.00000
+          CONSTANT       0.58669       0.188488        3.11261     0.00185
+         PDOMM2010      0.317594       0.118578        2.67835     0.00740
+          DUMMETRO     -0.133781      0.0357685       -3.74018     0.00018
+           DUMCPTM    -0.0684129      0.0308873       -2.21492     0.02677
+            DENDOM  -7.07415e-06    7.51518e-06      -0.941316     0.34654
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         3.2472     0.51735
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        60.4055     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:16
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.739292
+
+R-squared           :    0.672891  Log likelihood        :      42.675
+Sq. Correlation     : -            Akaike info criterion :      -73.35
+Sigma-square        :   0.0205517  Schwarz criterion     :    -57.9639
+S.E of regression   :    0.143359
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.739292      0.0679264        10.8837     0.00000
+          CONSTANT       0.60179       0.190151         3.1648     0.00155
+         PDOMM2010      0.302622       0.120403        2.51341     0.01196
+          DUMMETRO     -0.134093      0.0348287       -3.85008     0.00012
+           DUMCPTM    -0.0708743      0.0311075       -2.27837     0.02270
+        DENPOP2018  -3.45801e-06     3.0907e-06       -1.11884     0.26321
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         5.2539     0.26222
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.3608     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:11
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.740778
+
+R-squared           :    0.670749  Log likelihood        :     42.3207
+Sq. Correlation     : -            Akaike info criterion :    -72.6414
+Sigma-square        :   0.0206863  Schwarz criterion     :    -57.2553
+S.E of regression   :    0.143827
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.740778      0.0681122        10.8759     0.00000
+          CONSTANT      0.551791       0.178208        3.09634     0.00196
+         PDOMM2010      0.327333       0.117289        2.79082     0.00526
+          DUMMETRO     -0.139825      0.0344242       -4.06181     0.00005
+           DUMCPTM    -0.0660857      0.0306414       -2.15674     0.03103
+         DKMLINBUS  -1.26897e-06    1.69956e-06      -0.746644     0.45528
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.7355     0.60302
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.3093     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:04
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.752195
+
+R-squared           :    0.678015  Log likelihood        :     43.0693
+Sq. Correlation     : -            Akaike info criterion :    -74.1386
+Sigma-square        :   0.0202298  Schwarz criterion     :    -58.7525
+S.E of regression   :    0.142231
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.752195      0.0655536        11.4745     0.00000
+          CONSTANT      0.578697       0.181494        3.18851     0.00143
+         PDOMM2010      0.297344       0.117413        2.53247     0.01133
+          DUMMETRO     -0.127341       0.034902       -3.64853     0.00026
+           DUMCPTM     -0.066906       0.030204       -2.21513     0.02675
+          DENPTBUS   -0.00242172     0.00169502       -1.42872     0.15308
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         3.1877     0.52692
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        63.9380     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:18:00
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :     0.73865
+
+R-squared           :    0.669721  Log likelihood        :     42.2298
+Sq. Correlation     : -            Akaike info criterion :    -72.4597
+Sigma-square        :   0.0207508  Schwarz criterion     :    -57.0736
+S.E of regression   :    0.144051
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel       0.73865      0.0683887        10.8008     0.00000
+          CONSTANT      0.527523       0.174415        3.02453     0.00249
+         PDOMM2010       0.39917       0.147132        2.71301     0.00667
+          DUMMETRO      -0.13853      0.0357701       -3.87277     0.00011
+           DUMCPTM      -0.06321      0.0305015       -2.07236     0.03823
+         RENDP2010  -1.26134e-05    2.03482e-05      -0.619876     0.53534
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.6634     0.61564
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        60.0315     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:56
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.740976
+
+R-squared           :    0.669905  Log likelihood        :     42.1923
+Sq. Correlation     : -            Akaike info criterion :    -72.3847
+Sigma-square        :   0.0207393  Schwarz criterion     :    -56.9986
+S.E of regression   :    0.144011
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.740976      0.0687482        10.7781     0.00000
+          CONSTANT      0.546304       0.179977        3.03542     0.00240
+         PDOMM2010       0.33274       0.116883        2.84678     0.00442
+          DUMMETRO     -0.138153      0.0363761       -3.79791     0.00015
+           DUMCPTM    -0.0625664      0.0305122       -2.05054     0.04031
+         DENEMPREG  -9.34174e-07    1.70383e-06      -0.548278     0.58350
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.8999     0.57471
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.0110     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:51
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.739412
+
+R-squared           :    0.671779  Log likelihood        :     42.5088
+Sq. Correlation     : -            Akaike info criterion :    -73.0177
+Sigma-square        :   0.0206216  Schwarz criterion     :    -57.6316
+S.E of regression   :    0.143602
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.739412      0.0688758        10.7354     0.00000
+          CONSTANT      0.560608       0.182496         3.0719     0.00213
+         PDOMM2010      0.317352       0.118005         2.6893     0.00716
+          DUMMETRO     -0.130136      0.0369689       -3.52015     0.00043
+           DUMCPTM    -0.0622419      0.0303775       -2.04895     0.04047
+          DENESTAB  -2.93647e-05    3.10289e-05      -0.946365     0.34396
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.7883     0.59385
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.1797     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:46
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.745344
+
+R-squared           :    0.669718  Log likelihood        :     42.0432
+Sq. Correlation     : -            Akaike info criterion :    -72.0864
+Sigma-square        :    0.020751  Schwarz criterion     :    -56.7003
+S.E of regression   :    0.144052
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.745344      0.0672448         11.084     0.00000
+          CONSTANT      0.514425       0.207582        2.47818     0.01321
+         PDOMM2010      0.356013       0.171628        2.07432     0.03805
+          DUMMETRO     -0.144882      0.0360636        -4.0174     0.00006
+           DUMCPTM    -0.0643421      0.0308523       -2.08549     0.03703
+        PNBRAN2010     0.0198106       0.170407       0.116254     0.90745
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.6779     0.61308
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        62.2346     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:40
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.741444
+
+R-squared           :    0.671326  Log likelihood        :     42.3864
+Sq. Correlation     : -            Akaike info criterion :    -72.7728
+Sigma-square        :     0.02065  Schwarz criterion     :    -57.3867
+S.E of regression   :    0.143701
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.741444      0.0682111        10.8699     0.00000
+          CONSTANT      0.557219        0.18087        3.08077     0.00206
+         PDOMM2010       0.31663       0.119236        2.65548     0.00792
+          DUMMETRO      -0.13436      0.0360715       -3.72484     0.00020
+           DUMCPTM    -0.0620963      0.0304379        -2.0401     0.04134
+         DENLINBUS  -0.000772668    0.000938775       -0.82306     0.41047
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.8189     0.58857
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.6292     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:36
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.737485
+
+R-squared           :    0.670600  Log likelihood        :     42.3896
+Sq. Correlation     : -            Akaike info criterion :    -72.7793
+Sigma-square        :   0.0206956  Schwarz criterion     :    -57.3932
+S.E of regression   :     0.14386
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.737485      0.0686765        10.7385     0.00000
+          CONSTANT      0.492138       0.174784         2.8157     0.00487
+         PDOMM2010      0.318295       0.119439        2.66492     0.00770
+          DUMMETRO     -0.138208      0.0347176       -3.98091     0.00007
+           DUMCPTM    -0.0610168      0.0305743       -1.99569     0.04597
+         PDOMC2010      0.756704       0.910043       0.831503     0.40569
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         5.3936     0.24925
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        60.2210     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:32
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.737247
+
+R-squared           :    0.671244  Log likelihood        :     42.4901
+Sq. Correlation     : -            Akaike info criterion :    -72.9801
+Sigma-square        :   0.0206552  Schwarz criterion     :    -57.5941
+S.E of regression   :    0.143719
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.737247      0.0687366        10.7257     0.00000
+          CONSTANT       0.58669       0.188488        3.11261     0.00185
+         PDOMM2010      0.317594       0.118578        2.67835     0.00740
+          DUMMETRO     -0.133781      0.0357685       -3.74018     0.00018
+           DUMCPTM    -0.0684129      0.0308873       -2.21492     0.02677
+            DENDOM  -7.07415e-06    7.51518e-06      -0.941316     0.34654
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         3.2472     0.51735
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        60.4055     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:26
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.739292
+
+R-squared           :    0.672891  Log likelihood        :      42.675
+Sq. Correlation     : -            Akaike info criterion :      -73.35
+Sigma-square        :   0.0205517  Schwarz criterion     :    -57.9639
+S.E of regression   :    0.143359
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.739292      0.0679264        10.8837     0.00000
+          CONSTANT       0.60179       0.190151         3.1648     0.00155
+         PDOMM2010      0.302622       0.120403        2.51341     0.01196
+          DUMMETRO     -0.134093      0.0348287       -3.85008     0.00012
+           DUMCPTM    -0.0708743      0.0311075       -2.27837     0.02270
+        DENPOP2018  -3.45801e-06     3.0907e-06       -1.11884     0.26321
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         5.2539     0.26222
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.3608     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:22
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.740778
+
+R-squared           :    0.670749  Log likelihood        :     42.3207
+Sq. Correlation     : -            Akaike info criterion :    -72.6414
+Sigma-square        :   0.0206863  Schwarz criterion     :    -57.2553
+S.E of regression   :    0.143827
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.740778      0.0681122        10.8759     0.00000
+          CONSTANT      0.551791       0.178208        3.09634     0.00196
+         PDOMM2010      0.327333       0.117289        2.79082     0.00526
+          DUMMETRO     -0.139825      0.0344242       -4.06181     0.00005
+           DUMCPTM    -0.0660857      0.0306414       -2.15674     0.03103
+         DKMLINBUS  -1.26897e-06    1.69956e-06      -0.746644     0.45528
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         2.7355     0.60302
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.3093     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:15
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    5
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   91
+Lag coeff.   (Rho)  :    0.745058
+
+R-squared           :    0.669616  Log likelihood        :     42.0364
+Sq. Correlation     : -            Akaike info criterion :    -74.0728
+Sigma-square        :   0.0207574  Schwarz criterion     :    -61.2511
+S.E of regression   :    0.144074
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.745058      0.0671267        11.0993     0.00000
+          CONSTANT      0.529982       0.172999         3.0635     0.00219
+         PDOMM2010      0.341544       0.115849        2.94817     0.00320
+          DUMMETRO     -0.146594      0.0333705       -4.39294     0.00001
+           DUMCPTM    -0.0638153      0.0304845       -2.09337     0.03632
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       3         2.2426     0.52361
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        62.2511     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:09
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    6
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   90
+Lag coeff.   (Rho)  :    0.752195
+
+R-squared           :    0.678015  Log likelihood        :     43.0693
+Sq. Correlation     : -            Akaike info criterion :    -74.1386
+Sigma-square        :   0.0202298  Schwarz criterion     :    -58.7525
+S.E of regression   :    0.142231
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.752195      0.0655536        11.4745     0.00000
+          CONSTANT      0.578697       0.181494        3.18851     0.00143
+          DENPTBUS   -0.00242172     0.00169502       -1.42872     0.15308
+         PDOMM2010      0.297344       0.117413        2.53247     0.01133
+          DUMMETRO     -0.127341       0.034902       -3.64853     0.00026
+           DUMCPTM     -0.066906       0.030204       -2.21513     0.02675
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       4         3.1877     0.52692
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        63.9380     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:17:04
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    7
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   89
+Lag coeff.   (Rho)  :     0.74537
+
+R-squared           :    0.678301  Log likelihood        :     43.3063
+Sq. Correlation     : -            Akaike info criterion :    -72.6126
+Sigma-square        :   0.0202118  Schwarz criterion     :    -54.6621
+S.E of regression   :    0.142168
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel       0.74537      0.0670282        11.1203     0.00000
+          CONSTANT      0.576991        0.18336        3.14677     0.00165
+          DENPTBUS   -0.00247373     0.00170233       -1.45314     0.14618
+         RENDP2010  -1.37923e-05    2.01874e-05      -0.683213     0.49447
+         PDOMM2010      0.359395       0.146634        2.45097     0.01425
+          DUMMETRO     -0.118105      0.0374024        -3.1577     0.00159
+           DUMCPTM    -0.0663099      0.0302122       -2.19481     0.02818
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       5         3.5301     0.61884
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        61.6823     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:16:59
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    8
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   88
+Lag coeff.   (Rho)  :    0.749964
+
+R-squared           :    0.680745  Log likelihood        :     43.5421
+Sq. Correlation     : -            Akaike info criterion :    -71.0841
+Sigma-square        :   0.0200583  Schwarz criterion     :    -50.5693
+S.E of regression   :    0.141627
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.749964      0.0665266        11.2731     0.00000
+          CONSTANT      0.564092        0.18334        3.07674     0.00209
+         DENEMPREG    1.5775e-06    2.29193e-06       0.688283     0.49127
+          DENPTBUS     -0.003297     0.00205628       -1.60338     0.10885
+         RENDP2010  -2.31565e-05    2.42288e-05      -0.955743     0.33920
+         PDOMM2010      0.402003       0.159188        2.52534     0.01156
+          DUMMETRO     -0.119823      0.0372898       -3.21329     0.00131
+           DUMCPTM    -0.0690194      0.0303698       -2.27263     0.02305
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       6         3.9039     0.68968
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        62.1254     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:16:50
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :    9
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   87
+Lag coeff.   (Rho)  :    0.749183
+
+R-squared           :    0.683609  Log likelihood        :      43.997
+Sq. Correlation     : -            Akaike info criterion :     -69.994
+Sigma-square        :   0.0198783  Schwarz criterion     :    -46.9149
+S.E of regression   :     0.14099
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.749183      0.0666983        11.2324     0.00000
+          CONSTANT      0.565968       0.183466        3.08486     0.00204
+          DENESTAB  -0.000100026    0.000104685      -0.955497     0.33933
+         DENEMPREG   6.42764e-06    5.56059e-06        1.15593     0.24771
+          DENPTBUS   -0.00243158     0.00223202       -1.08941     0.27597
+         RENDP2010  -2.36956e-05     2.4099e-05      -0.983258     0.32548
+         PDOMM2010      0.383529       0.159526        2.40418     0.01621
+          DUMMETRO     -0.114112      0.0376478       -3.03103     0.00244
+           DUMCPTM    -0.0690117       0.030206        -2.2847     0.02233
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       7         5.8220     0.56068
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        62.2837     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:16:35
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :   10
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   86
+Lag coeff.   (Rho)  :    0.739786
+
+R-squared           :    0.684673  Log likelihood        :     44.4222
+Sq. Correlation     : -            Akaike info criterion :    -68.8443
+Sigma-square        :   0.0198115  Schwarz criterion     :    -43.2008
+S.E of regression   :    0.140753
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.739786       0.068015        10.8768     0.00000
+          CONSTANT      0.739354       0.255227        2.89685     0.00377
+          DENESTAB  -0.000106797    0.000104678       -1.02024     0.30761
+         DENEMPREG   6.50917e-06    5.55321e-06        1.17215     0.24114
+          DENPTBUS    -0.0028744     0.00228385       -1.25858     0.20818
+         RENDP2010  -3.68158e-05    2.78556e-05       -1.32167     0.18628
+        PNBRAN2010      -0.20517        0.22026      -0.931491     0.35160
+         PDOMM2010      0.280782       0.196425        1.42946     0.15287
+          DUMMETRO     -0.116898      0.0377322       -3.09811     0.00195
+           DUMCPTM    -0.0632402      0.0308413        -2.0505     0.04032
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       8         6.2252     0.62202
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        59.7173     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:16:28
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :   11
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   85
+Lag coeff.   (Rho)  :    0.743679
+
+R-squared           :    0.687612  Log likelihood        :     44.7636
+Sq. Correlation     : -            Akaike info criterion :    -67.5271
+Sigma-square        :   0.0196268  Schwarz criterion     :    -39.3193
+S.E of regression   :    0.140096
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.743679      0.0671959        11.0673     0.00000
+          CONSTANT      0.769066       0.257436        2.98741     0.00281
+          DENESTAB  -0.000172086    0.000130754        -1.3161     0.18814
+         DENEMPREG   7.12628e-06    5.57641e-06        1.27793     0.20127
+          DENPTBUS    -0.0037407      0.0024993        -1.4967     0.13447
+         DENLINBUS    0.00202016      0.0024347       0.829737     0.40669
+         RENDP2010  -3.26581e-05    2.81247e-05       -1.16119     0.24557
+        PNBRAN2010     -0.237791       0.223096       -1.06587     0.28648
+         PDOMM2010       0.23927       0.201516        1.18735     0.23509
+          DUMMETRO     -0.116446      0.0375671       -3.09967     0.00194
+           DUMCPTM    -0.0654963      0.0308022       -2.12635     0.03347
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       9         5.8791     0.75195
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        60.3680     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:16:18
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :   12
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   84
+Lag coeff.   (Rho)  :    0.734029
+
+R-squared           :    0.688119  Log likelihood        :     45.1071
+Sq. Correlation     : -            Akaike info criterion :    -66.2141
+Sigma-square        :   0.0195949  Schwarz criterion     :     -35.442
+S.E of regression   :    0.139982
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.734029      0.0686549        10.6916     0.00000
+          CONSTANT      0.757455       0.257051        2.94671     0.00321
+          DENESTAB  -0.000171783    0.000130639       -1.31494     0.18853
+         DENEMPREG   7.62029e-06    5.60282e-06        1.36008     0.17380
+          DENPTBUS   -0.00375099      0.0025036       -1.49824     0.13407
+         DENLINBUS    0.00213326     0.00243812       0.874961     0.38160
+         RENDP2010   -3.7788e-05    2.87623e-05        -1.3138     0.18891
+        PNBRAN2010     -0.295395       0.232437       -1.27086     0.20378
+         PDOMC2010      0.873335        1.05294       0.829423     0.40686
+         PDOMM2010      0.202271       0.206701       0.978564     0.32780
+          DUMMETRO      -0.11484      0.0375712       -3.05661     0.00224
+           DUMCPTM     -0.061436      0.0311105       -1.97477     0.04829
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                      10         9.8409     0.45456
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        57.4651     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:16:12
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :   13
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   83
+Lag coeff.   (Rho)  :     0.73515
+
+R-squared           :    0.688365  Log likelihood        :     45.1145
+Sq. Correlation     : -            Akaike info criterion :     -64.229
+Sigma-square        :   0.0195795  Schwarz criterion     :    -30.8924
+S.E of regression   :    0.139927
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel       0.73515       0.069022        10.6509     0.00000
+          CONSTANT      0.758366       0.256814        2.95298     0.00315
+          DENESTAB   -0.00017139    0.000130636       -1.31196     0.18953
+         DENEMPREG   7.39643e-06    5.89235e-06        1.25526     0.20938
+            DENDOM   1.28449e-06    1.05361e-05       0.121913     0.90297
+          DENPTBUS   -0.00397017      0.0030528        -1.3005     0.19343
+         DENLINBUS    0.00224073     0.00258528       0.866724     0.38609
+         RENDP2010  -3.80681e-05    2.88525e-05       -1.31941     0.18703
+        PNBRAN2010     -0.306332       0.250144       -1.22462     0.22072
+         PDOMC2010      0.900842        1.07711       0.836348     0.40296
+         PDOMM2010      0.196731       0.211404       0.930595     0.35206
+          DUMMETRO     -0.115781      0.0383818       -3.01656     0.00256
+           DUMCPTM    -0.0604349      0.0322783       -1.87231     0.06116
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                      11        10.0352     0.52722
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        56.7889     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:15:52
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :   14
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   82
+Lag coeff.   (Rho)  :    0.734889
+
+R-squared           :    0.689556  Log likelihood        :     45.3054
+Sq. Correlation     : -            Akaike info criterion :    -62.6108
+Sigma-square        :   0.0195046  Schwarz criterion     :      -26.71
+S.E of regression   :    0.139659
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.734889      0.0687038        10.6965     0.00000
+          CONSTANT      0.780841       0.260826        2.99372     0.00276
+          DENESTAB   -0.00016966     0.00013042       -1.30088     0.19330
+         DENEMPREG    6.1597e-06    6.20911e-06       0.992042     0.32118
+            DENDOM   2.70475e-05    4.29788e-05       0.629323     0.52914
+          DENPTBUS   -0.00264873     0.00372139      -0.711758     0.47661
+         DENLINBUS     0.0017373     0.00270692       0.641799     0.52100
+         RENDP2010  -3.50045e-05    2.91848e-05       -1.19941     0.23037
+        DENPOP2018  -1.07816e-05    1.74751e-05      -0.616972     0.53725
+        PNBRAN2010     -0.303732       0.249739        -1.2162     0.22391
+         PDOMC2010      0.992865        1.08733       0.913118     0.36118
+         PDOMM2010      0.145366       0.226493        0.64181     0.52100
+          DUMMETRO     -0.116524      0.0383421       -3.03905     0.00237
+           DUMCPTM    -0.0612108      0.0322691       -1.89688     0.05784
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                      12        14.3346     0.27985
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        56.8614     0.00000
+============================== END OF REPORT ================================
+
+>>07/27/19 19:14:43
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :    Temp_rel  Number of Observations:   96
+Mean dependent var  :     2.42342  Number of Variables   :   15
+S.D. dependent var  :    0.250656  Degrees of Freedom    :   81
+Lag coeff.   (Rho)  :    0.734436
+
+R-squared           :    0.689591  Log likelihood        :      45.323
+Sq. Correlation     : -            Akaike info criterion :    -60.6461
+Sigma-square        :   0.0195025  Schwarz criterion     :    -22.1808
+S.E of regression   :    0.139651
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+        W_Temp_rel      0.734436      0.0689265        10.6554     0.00000
+          CONSTANT      0.782871       0.261463         2.9942     0.00275
+          DENESTAB  -0.000173201    0.000131807       -1.31405     0.18883
+         DENEMPREG    6.2288e-06    6.21976e-06        1.00145     0.31661
+            DENDOM   2.52505e-05    4.40009e-05       0.573863     0.56606
+          DENPTBUS   -0.00273796     0.00375237      -0.729662     0.46560
+         DKMLINBUS  -4.72168e-07     2.5214e-06      -0.187264     0.85145
+         DENLINBUS    0.00205075     0.00318231       0.644422     0.51930
+         RENDP2010  -3.42724e-05    2.94298e-05       -1.16455     0.24420
+        DENPOP2018  -1.01228e-05    1.78069e-05      -0.568477     0.56971
+        PNBRAN2010     -0.301651       0.249976       -1.20672     0.22754
+         PDOMC2010      0.964384        1.09673       0.879324     0.37923
+         PDOMM2010      0.146677       0.226595        0.64731     0.51743
+          DUMMETRO     -0.116631      0.0383466       -3.04148     0.00235
+           DUMCPTM    -0.0627887      0.0334273       -1.87837     0.06033
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                      13        14.3709     0.34825
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        56.7372     0.00000
+============================== END OF REPORT ================================
+
+

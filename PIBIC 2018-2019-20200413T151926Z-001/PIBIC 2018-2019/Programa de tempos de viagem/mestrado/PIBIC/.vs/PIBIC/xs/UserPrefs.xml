@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{B6B96731-4F8A-47D4-A82B-93069979B60D}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PIBIC/MasterFunctions/timerSort/function.json">
+    <Files>
+      <File FileName="PIBIC/MasterFunctions/Shared/Uber/UberClient.csx" Line="34" Column="2" />
+      <File FileName="PIBIC/MasterUberDataAPI/README.md" Line="1" Column="1" />
+      <File FileName="PIBIC/MasterUberDataAPI/Program.cs" Line="9" Column="36" />
+      <File FileName="PIBIC/MasterFunctions/timerSort/function.json" Line="16" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.PIBIC PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
+</Properties>

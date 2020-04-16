@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "indicador-de-mobilidade",
+  "private_key_id": "ac2cf5b26c695f6790c0f63a159016b37b058e3a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCpdB+6UB0S0JWb\nFOenQQzWokP/xBa5pYM95vOIy4+ymgPOBlo+XpiF3POuuIxldPhYXZHAd2RYXLsi\nfD9MLNztJrJ6A+X+aCVaH71XcWf3lZoMSWlz4AWOUNYtc6oSmqqyFaNIiOqQnR8A\n9GSGenEtXqVo1HI0d+a37oJtbqjoZZDb/w3ZWk9tbU8nPs9r4lXvVajJP0xUM3Ye\n6y7EN4zdIbOd7ixwpYWFrcclVBv2BBDEmNdi/YRJFgD5yWeg6wiAwubW52x+jSSl\nVZ/vi5b/lC2cCRQQQYI2yUZ6QBYr86WDJpdOmgz1Wbpla+kVMOiMQDPnxuRgTuGj\nzCkCEl5pAgMBAAECggEADAqNap7gwgKCbwe4QmFT+TiEnnsfpkeFoPN1YMYeSvG4\nzX4UEZSFQBXoVwUULO137EeR4NxbDBBi19t+X/pcJJn4WsVGJaLe7J2OxdTwL165\nGKBq1uoXWvqRjZ9HeZT2BjuVY8Ue7fHMTzQOpKO0wSWVmXJnPyU6Bt3y9LXFWOYp\nHcEL+Iaa+PnyUgxHvjlGN1opi+B5ZSdL/75kOzp2tIgNOsbUsSCCV7TSSsSN4uzY\nJWvlhNaICwQRE2RuYV6d/71qjkhdkv4OTVTL6JI+K70KBXTzRSn4NIx5VYQrlQze\n5rk1kdPj8l/fvu2vAmtelMKWQCCNRuvFJK65nsbTFQKBgQDVtJIj1xm3FUJKaXF5\nY/1eMu2bi8XoFCIJkFzcGFiALGarq9RCDdVf6mz3LZCGQJ4CiF3/lzxvc+F2KKgW\nhuiYGmre1U9HWWB3NpyO3HJ7VpFQ/RouEnOwQHtrubBVYbGZzUdYT/KpkZvfdCnR\nuE4E/4U1R49fbDCm+d3MOE5TpwKBgQDK/YdQt9hJph8S0HWPECOcSOQ8n3yCj0xY\nNyFtPkaeXSIPUj4BeePM+zk5+Xn/ZDilR++za3E3DLhNf77EKriJqrR57DcE6Zs1\nPp4sNcbGkOwd9D/w0H6kQLKRXc5N/5wlWWec8CvTZ+3kruJx8wvXnShU1gta/BYX\nBIfTKwo/bwKBgEGlqo7f8MJRAYAiS/1iPd7F/j+d/DmClcIiWqQxxl35RcDOk/GG\nlllUhgyYLqFPEDru8REmwCXsjwHhE2F4J9MxqkqxdB0S05NLb2RjS7efrBwY5AXr\nHSazaDZ7YDOaQxhf+t6iEIUOebd207Hcz/qxE5Z+WQiTD477iqrFUSpZAoGAeiJh\nMGftcyLIv4E9un5zbq1M5kzvlX6y6MEDE7/MraxLufw54pl8PvFJVWCNzuR2ULwf\ntUyIKh81JSwfk9hAgFR9kn5V/FayVC8A7IjOuNqptrwnXLWV/S4QQva2EqghQzev\n5/V56RE3SckP5o/eKDUe9yxyWKQkhmTrdFsJJ3ECgYBp9E9vayFdDM10AYF9ol9k\nI2VmG1y1R8u/UW2pR8C9MvTsa1L+4Do0+FCt9jZr2EA+fb+svF0KvDGVJvSRfdzk\nUxg9uK5JndE61MjP58z3DkyKDRsG+D9oPCx9HkVNQpSHWUGACrTKQaFZlcfq3Jxo\npQqHLkoAgqjMRnhVpoNAMw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "starting-account-62k1rmj78u1d@indicador-de-mobilidade.iam.gserviceaccount.com",
+  "client_id": "107206418694405314810",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/starting-account-62k1rmj78u1d%40indicador-de-mobilidade.iam.gserviceaccount.com"
+}

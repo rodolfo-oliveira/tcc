@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <title>mapa_Origem_diferenca_tempo_areas_de_ponderacao</title>
+    <layers>
+        <layer>
+            <datasource>
+                <type>ESRI Shapefile</type>
+                <path>mapa_Origem_diferenca_tempo_areas_de_ponderacao.shp</path>
+            </datasource>
+            <layername>mapa_Origem_diferenca_tempo_areas_de_ponderacao</layername>
+            <title/>
+            <variable_order>
+                <time_ids>
+                    <id>time 0</id>
+                </time_ids>
+                <var>ID</var>
+                <var>AREA</var>
+                <var>COD_AED</var>
+                <var>COD_AED_S</var>
+                <var>V5</var>
+                <var>Dif_temp</var>
+                <var>Temp_rel</var>
+                <var>LISA_I</var>
+                <var>LISA_CL</var>
+                <var>LISA_P</var>
+                <var>LISA__trel</var>
+            </variable_order>
+            <custom_classifications/>
+            <weights_entries>
+                <weights>
+                    <title>mapa_Origem_tempo_relativo_areas_de_ponderacao</title>
+                    <default/>
+                    <meta_info>
+                        <path>mapa_Origem_tempo_relativo_areas_de_ponderacao.gal</path>
+                        <id_variable>ID</id_variable>
+                        <symmetry>unknown</symmetry>
+                        <num_observations>310</num_observations>
+                        <min_neighbors>1</min_neighbors>
+                        <max_neighbors>12</max_neighbors>
+                        <mean_neighbors>5.561290322580645</mean_neighbors>
+                        <median_neighbors>5</median_neighbors>
+                        <non_zero_perc>1.793964620187305</non_zero_perc>
+                    </meta_info>
+                </weights>
+            </weights_entries>
+            <default_vars>
+                <default_var>
+                    <name>Temp_rel</name>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+                <default_var>
+                    <name/>
+                    <time_id>time 0</time_id>
+                </default_var>
+            </default_vars>
+        </layer>
+    </layers>
+</project>

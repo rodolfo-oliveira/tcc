@@ -1,0 +1,5 @@
+cron:
+- description: "API call"
+  url: /tasks/summary
+  schedule: every 1 hour from 5:00 to 21:00
+  timezone: America/Sao_Paulo

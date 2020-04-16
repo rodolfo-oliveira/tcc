@@ -1,0 +1,41 @@
+>>07/24/19 11:40:59
+REGRESSION
+----------
+SUMMARY OF OUTPUT: SPATIAL LAG MODEL - MAXIMUM LIKELIHOOD ESTIMATION
+Data set            : mapa_Origem_tempo_relativo_distritos
+Spatial Weight      : mapa_Origem_tempo_relativo_distritos
+Dependent Variable  :   Tempo_dif  Number of Observations:   96
+Mean dependent var  :     3579.12  Number of Variables   :    8
+S.D. dependent var  :     876.211  Degrees of Freedom    :   88
+Lag coeff.   (Rho)  :     0.80703
+
+R-squared           :    0.783234  Log likelihood        :    -722.975
+Sq. Correlation     : -            Akaike info criterion :     1461.95
+Sigma-square        :      166422  Schwarz criterion     :     1482.47
+S.E of regression   :     407.948
+
+-----------------------------------------------------------------------------
+       Variable       Coefficient     Std.Error       z-value    Probability
+-----------------------------------------------------------------------------
+       W_Tempo_dif       0.80703      0.0549327        14.6913     0.00000
+          CONSTANT       1920.04        408.723        4.69766     0.00000
+        QTLbus2018      -2.78019       0.869429       -3.19773     0.00139
+           POP2018     -0.014711     0.00613105       -2.39943     0.01642
+        DENPOP2018    -0.0318104      0.0105966       -3.00194     0.00268
+          DOMP2018     0.0477181      0.0191805        2.48784     0.01285
+         ESTAB2016    -0.0768232      0.0279071       -2.75282     0.00591
+         PDOMM2010      -873.505         422.06       -2.06962     0.03849
+-----------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+DIAGNOSTICS FOR HETEROSKEDASTICITY 
+RANDOM COEFFICIENTS
+TEST                                     DF      VALUE        PROB
+Breusch-Pagan test                       6        62.8754     0.00000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+SPATIAL LAG DEPENDENCE FOR WEIGHT MATRIX : mapa_Origem_tempo_relativo_distritos
+TEST                                     DF      VALUE        PROB
+Likelihood Ratio Test                    1        70.2231     0.00000
+============================== END OF REPORT ================================
+

@@ -1,0 +1,93 @@
+***********************************************************************
+   *                       Package   GWmodel                             *
+   ***********************************************************************
+   Program starts at: 2019-07-27 19:00:32 
+   Call:
+   gwr.basic(formula = Tempo_dif ~ PNBRAN2010 + DENPTBUS + DUMMETRO + 
+    DUMCPTM + DENPOP2018, data = dados, bw = bw_def, kernel = kernel_type, 
+    adaptive = TRUE, F123.test = TRUE)
+
+   Dependent (y) variable:  Tempo_dif
+   Independent variables:  PNBRAN2010 DENPTBUS DUMMETRO DUMCPTM DENPOP2018
+   Number of data points: 96
+   ***********************************************************************
+   *                    Results of Global Regression                     *
+   ***********************************************************************
+
+   Call:
+    lm(formula = formula, data = data)
+
+   Residuals:
+     Min       1Q   Median       3Q      Max 
+-1540.63  -392.74   -27.65   257.91  2781.23 
+
+   Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+   (Intercept) 4082.01944  256.05224  15.942  < 2e-16 ***
+   PNBRAN2010  2058.15828  521.77321   3.945 0.000158 ***
+   DENPTBUS     -23.94905    8.95680  -2.674 0.008905 ** 
+   DUMMETRO    -365.13992  161.78312  -2.257 0.026430 *  
+   DUMCPTM     -302.19110  135.80239  -2.225 0.028565 *  
+   DENPOP2018    -0.03556    0.01628  -2.184 0.031570 *  
+
+   ---Significance stars
+   Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+   Residual standard error: 629 on 90 degrees of freedom
+   Multiple R-squared: 0.5169
+   Adjusted R-squared:  0.49 
+   F-statistic: 19.26 on 5 and 90 DF,  p-value: 5.489e-13 
+   ***Extra Diagnostic information
+   Residual sum of squares: 35607171
+   Sigma(hat): 615.467
+   AIC:  1517.512
+   AICc:  1518.785
+   ***********************************************************************
+   *          Results of Geographically Weighted Regression              *
+   ***********************************************************************
+
+   *********************Model calibration information*********************
+   Kernel function: gaussian 
+   Adaptive bandwidth: 31 (number of nearest neighbours)
+   Regression points: the same locations as observations are used.
+   Distance metric: Euclidean distance metric is used.
+
+   ****************Summary of GWR coefficient estimates:******************
+                     Min.     1st Qu.      Median     3rd Qu.      Max.
+   Intercept  3418.509072 3522.797259 3728.280999 3881.040055 4096.1557
+   PNBRAN2010 -635.433851  843.463965 1497.333789 1724.214862 2814.9595
+   DENPTBUS    -36.167378  -25.330630  -20.007130  -16.440848   -7.4621
+   DUMMETRO   -988.591302 -770.268771 -494.586461 -274.670870  -64.3393
+   DUMCPTM    -511.807549 -305.507731  -32.707978   24.501113  158.6499
+   DENPOP2018   -0.035883   -0.011074   -0.004379    0.010311    0.0364
+   ************************Diagnostic information*************************
+   Number of data points: 96 
+   Effective number of parameters (2trace(S) - trace(S'S)): 17.18775 
+   Effective degrees of freedom (n-2trace(S) + trace(S'S)): 78.81225 
+   AICc (GWR book, Fotheringham, et al. 2002, p. 61, eq 2.33): 1493.534 
+   AIC (GWR book, Fotheringham, et al. 2002,GWR p. 96, eq. 4.22): 1470.842 
+   Residual sum of squares: 21813708 
+   R-square value:  0.7040348 
+   Adjusted R-square value:  0.6386598 
+   ******************F test results of GWR calibration********************
+   ---F1 test (Leung et al. 2000)
+    F1 statistic Numerator DF Denominator DF    Pr(>)   
+         0.69959          Inf             90 0.004711 **
+   ---F2 test (Leung et al. 2000)
+    F2 statistic Numerator DF Denominator DF Pr(>)
+          3.1163      -1.8509             90    NA
+   ---F3 test (Leung et al. 2000)
+              F3 statistic Numerator DF Denominator DF     Pr(>)    
+   Intercept       0.90516     38.37514            Inf  0.637778    
+   PNBRAN2010      2.35656     42.36888            Inf 1.534e-06 ***
+   DENPTBUS        1.78162     33.49680            Inf  0.003552 ** 
+   DUMMETRO        4.56934     42.67692            Inf < 2.2e-16 ***
+   DUMCPTM         3.45815     63.08890            Inf < 2.2e-16 ***
+   DENPOP2018      1.85101     25.18193            Inf  0.005820 ** 
+   ---F4 test (GWR book p92)
+    F4 statistic Numerator DF Denominator DF   Pr(>)  
+         0.61262     78.81225             90 0.01349 *
+
+   ---Significance stars
+   Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+   ***********************************************************************
+   Program stops at: 2019-07-27 19:00:32 
