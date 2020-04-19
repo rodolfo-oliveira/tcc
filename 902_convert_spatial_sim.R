@@ -1,12 +1,14 @@
-#funcao para converter as bases simuladas ppara sf
+#funcao para converter as bases simuladas ppara sp
 
-convert_spatial <- function(database, projection, origem = T){
-  require(sf)
+convert_spatial <- function(database, origem = T){
+  require(sp)
   require(dplyr)
   
   if(origem == T){coord_name <- c("OrLong", "OrLat")}
-  else{coord_name <- c("DestLong", "DestLat")}
+  if(origem == F){coord_name <- c("DestLong", "DestLat")}
   
-  return(st_as_sf(database, coords = coord_name, crs = projection))
+  return(SpatialPointsDataFrame(coords = database[,coord_name], 
+                                data = database, 
+                                proj4string = CRS(as.character(rgdal::make_EPSG()[rgdal::make_EPSG()$code %in% 4674,]$prj4))))
 }
 
