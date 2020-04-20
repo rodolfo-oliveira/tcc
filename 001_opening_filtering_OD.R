@@ -9,7 +9,8 @@ database_base <- foreign::read.dbf('OD 2017/Banco de dados/OD_2017.dbf')
 database <- database_base[,c('CONDMORA', 'CRITERIOBR', 'GRAU_INS',
                         'VL_REN_I', 'TOT_VIAG', 'CO_O_X',
                         'CO_O_Y', 'CO_D_X', 'CO_D_Y',
-                        'MOTIVO_O', 'MOTIVO_D', 'MODOPRIN','DURACAO')]
+                        'MOTIVO_O', 'MOTIVO_D', 'MODOPRIN','DURACAO',
+                        'ANDA_O', 'ANDA_D', "MUNI_O", "MUNI_D")]
 
 #viagens de transporte motorizado (carro, proprio ou 'alugado')
 database_privado <-database[database$MODOPRIN %in% 9:12,]
