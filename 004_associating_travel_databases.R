@@ -16,7 +16,8 @@ summary(count[which(database_publico_origem$MUNI_O==36 & database_publico_origem
 hist(count[which(database_publico_origem$MUNI_O==36 & database_publico_origem$MUNI_D==36)])
 
 
-associatedTrips <- associate_buffer_trips(spatialDatabaseODOrigin = database_publico_origem,
+
+ssociatedTrips <- associate_buffer_trips(spatialDatabaseODOrigin = database_publico_origem,
                                           spatialDatabaseODestination = database_publico_destino,
                                           spatialSimulatedDatabaseOrigin = simulated_database_origem,
                                           spatialSimulatedDatabaseDestination = simulated_database_destino,
