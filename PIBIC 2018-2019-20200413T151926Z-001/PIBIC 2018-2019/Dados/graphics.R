@@ -1,4 +1,4 @@
-setwd(dir ="~/Documentos/Programação/PIBIC 2018-2019/Dados/")
+
 
 #pacotes ----------------------------------------------
 
@@ -21,7 +21,7 @@ int.conf.t <- function(x, conf = 0.975){
 return (c(a-error, a+error))
 }
 #Tratamento dos dados --------------------------------------
-dados = read.csv(file = "Bancos/Cloud_SQL_Export_2019-06-10 (00_06_00)alt", header = FALSE, col.names = c("ID","Data","Hour","Day", "OrCoords","OrAdress","DestCoords", "DestAdress", "duration","distance", "fare", "mode"))
+dados = read.csv(file = "~/Documents/FGV/TCC/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/Cloud_SQL_Export_2019-06-10 (00_06_00)alt", header = FALSE, col.names = c("ID","Data","Hour","Day", "OrCoords","OrAdress","DestCoords", "DestAdress", "duration","distance", "fare", "mode"))
 
 dados = dados[dados$ID>400,]
 
@@ -73,7 +73,7 @@ for (i in 1:length(datas$Data)){
   datas$count[i] = ifelse (is.na(datas$count[i]) == TRUE, 0,datas$count[i])  
 }
 
-jpeg("Histograma_Registro_Chamadas.jpg", width = 800, height = 400)
+#jpeg("Histograma_Registro_Chamadas.jpg", width = 800, height = 400)
 plot(datas$count/200 ~ datas$Data, type = "l", xlab = "", ylab = "Nº de chamadas", ylim = c(0,70))
 title("Registro de chamadas")
 dev.off()
@@ -81,9 +81,9 @@ dev.off()
 
 
 
-dados = read.csv2(file = "Bancos/banco_comparacao_medias.csv", dec = ",")
+dados = read.csv2(file = "~/Documents/FGV/TCC/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_comparacao_medias.csv", dec = ",")
 
-dados2 <- read.csv2(file = "Bancos/banco_viagens_pareadas.csv", dec = ",")
+dados2 <- read.csv2(file = "~/Documents/FGV/TCC/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_viagens_pareadas.csv", dec = ",")
 
 
 dados %>%
@@ -135,7 +135,7 @@ for (i in 1:k){
 
 }
 
-jpeg("Mean_Ratios_through_distance..jpg", width = 800, height = 600)
+#jpeg("Mean_Ratios_through_distance..jpg", width = 800, height = 600)
 plot(y=p[,3],x=p[,1]/1000,
             xlab = "Intervals of 1km",
             ylab = "Mean of travel Times Ratios",
@@ -145,7 +145,7 @@ plot(y=p[,3],x=p[,1]/1000,
 title("Mean of Travel Times Ratios for 1km intervals")
 dev.off()
 
-jpeg("Mean_Diferences_through_distance..jpg", width = 800, height = 600)
+#jpeg("Mean_Diferences_through_distance..jpg", width = 800, height = 600)
 plot(y=p[,5],x=p[,1]/1000,
      xlab = "Intervals of 1km",
      ylab = "Mean of Travel Time Diferences",
@@ -153,26 +153,40 @@ plot(y=p[,5],x=p[,1]/1000,
      xlim = c(0,100),
      ylim = c(0,16000))
 title("Mean of Travel Time Diferences for 1km intervals")
-dev.off()
+#dev.off()
 
 #analises dos dados-------------
 
 media_dist=(dados2$distpriv+dados2$distpublico)/2
 
-jpeg(paste("Scatter", "_Tempo.jpg", sep = ""), width = 800, height = 600)
+jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "Diferencas.jpg", sep = ""), width = 480, height = 480)
+
 scatterplot(y=dados$tempodif,x=((dados2$distpriv+dados2$distpublico)/2),
      xlab = "Média de distâncias entre a viagem pública e a privada",
      ylab = "Diferenças de tempo",
      pch = 20,
-     span = FALSE)
-title("Diferenças de tempo em relação à distância das viagens")
+     #span = FALSE,
+     smooth = F,col = "black")
+
 dev.off()
+jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "TempoRel.jpg", sep = ""), width = 480, height = 480)
+
+scatterplot(y=dados2$temprelativo,x=(dados2$distpriv+dados2$distpublico)/2,
+     xlab = "Média de distâncias entre a viagem pública e a privada",
+     ylab = "Tempo relativo",
+     pch = 20,
+     #span = FALSE,
+     smooth = F,
+     col = "black")
+
+dev.off()
+
 cor(y=dados$tempodif,x=(dados2$distpriv+dados2$distpublico)/2)
 
 plot(y=dados$tempodif,x=((dados2$distpriv+dados2$distpublico)/2),
-            xlab = "Média de distâncias entre a viagem pública e a privada",
-            ylab = "Diferenças de tempo",
-            pch = 20)
+     xlab = "Média de distâncias entre a viagem pública e a privada",
+     ylab = "Diferenças de tempo",
+     pch = 20)
 
 modelo <- lm(I(dados$tempodif-0)~ 0 + media_dist)
 abline(0, coef(modelo))
@@ -182,15 +196,6 @@ plot(media_dist, modelo.res,
      xlab="Resíduos", ylab="Diferença", 
      main="Residuos do modelo linear - Diferenças de tempo em relação à distância das viagens") 
 abline(0, 0)          
-
-jpeg(paste("Scatter", "_Tempo_Relativo.jpg", sep = ""), width = 800, height = 600)
-scatterplot(y=dados2$temprelativo,x=(dados2$distpriv+dados2$distpublico)/2,
-     xlab = "Média de distâncias entre a viagem pública e a privada",
-     ylab = "Tempo relativo",
-     pch = 20,
-     span = FALSE)
-title("Tempo relativo em relação à distância das viagens")
-dev.off()
 
 cor(y=dados2$temprelativo,x=(dados2$distpriv+dados2$distpublico)/2)
 
@@ -209,7 +214,7 @@ plot(media_dist, modelo.res,
      main="Residuos do modelo linear - Diferenças de tempo em relação à distância das viagens") 
 abline(0, 0)   
 
-jpeg(paste("Scatter", "_Tempo_Tempo_relativo_entreeles.jpg", sep = ""), width = 800, height = 600)
+#jpeg(paste("Scatter", "_Tempo_Tempo_relativo_entreeles.jpg", sep = ""), width = 800, height = 600)
 scatterplot(y=dados2$temprelativo,x=dados$tempodif, z = dados2$distpublico,
       xlab = "Diferenças de tempo",
       ylab = "Tempo relativo",
@@ -225,7 +230,7 @@ dev.off()
 #histogramas
 setwd(dir ="graficos/")
 
-jpeg(paste("Histograma_Diferenca", "_Tempo.jpg", sep = ""), width = 800, height = 400)
+#jpeg(paste("Histograma_Diferenca", "_Tempo.jpg", sep = ""), width = 800, height = 400)
 m = mean(dados$tempodif)
 std = sqrt(var(dados$tempodif))
 grafico1 = hist(scale(dados$tempodif), breaks=50, freq = FALSE,
@@ -239,7 +244,7 @@ dev.off()
 
 int.conf.t(dados$tempodif)
 
-jpeg(paste("Histograma_Diferenca","_Distancia.jpg", sep = ""), width = 800, height = 400)
+#jpeg(paste("Histograma_Diferenca","_Distancia.jpg", sep = ""), width = 800, height = 400)
 m = mean(dados$distdif)
 std = sqrt(var(dados$distdif))
 grafico1 = hist(scale(dados$distdif), breaks=200, freq = FALSE,
@@ -251,7 +256,7 @@ curve(dt(x, df = nrow(dados)),
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
 dev.off()
 
-jpeg(paste("Histograma_Diferenca","_Velocidade.jpg", sep =""), width = 800, height = 400)
+#jpeg(paste("Histograma_Diferenca","_Velocidade.jpg", sep =""), width = 800, height = 400)
 m = mean(dados$veldif)
 std = sqrt(var(dados$veldif))
 grafico1 = hist(scale(dados$veldif), breaks=500, freq = FALSE,
@@ -263,7 +268,7 @@ curve(dt(x, df = nrow(dados)),
       col="darkblue", lwd=2, add=TRUE, yaxt="n")
 dev.off()
 
-jpeg(paste("Histograma_Tempo_Relativo.jpg", sep =""), width = 800, height = 400)
+#jpeg(paste("Histograma_Tempo_Relativo.jpg", sep =""), width = 800, height = 400)
 m = mean(dados2$temprelativo)
 std = sqrt(var(dados2$temprelativo))
 grafico1 = hist(scale(dados2$temprelativo), breaks=50, freq = FALSE,
@@ -283,7 +288,7 @@ for (i in (5:21)){
   aux2 = dados2[dados$Hourclass==i,]
   aux2 = aux2[is.na(aux2$ID) != TRUE,]
   
-  jpeg(paste("Histograma_Diferenca_Tempo_", as.character(i),"h.jpg", sep = ""), width = 800, height = 400)
+  #jpeg(paste("Histograma_Diferenca_Tempo_", as.character(i),"h.jpg", sep = ""), width = 800, height = 400)
   m = mean(aux$tempodif)
   std = sqrt(var(aux$tempodif))
   grafico1 = hist(scale(aux$tempodif), breaks=100, freq = FALSE,
@@ -294,9 +299,9 @@ for (i in (5:21)){
                   axes = TRUE, plot = TRUE, labels = FALSE)
   curve(dt(x, df = nrow(dados)), 
         col="darkblue", lwd=2, add=TRUE, yaxt="n")
-  dev.off()
+  #dev.off()
   
-  jpeg(paste("Histograma_Diferenca_Distancia_", as.character(i),"h.jpg", sep = ""), width = 800, height = 400)
+  #jpeg(paste("Histograma_Diferenca_Distancia_", as.character(i),"h.jpg", sep = ""), width = 800, height = 400)
   m = mean(aux$distdif)
   std = sqrt(var(aux$distdif))
   grafico1 = hist(scale(aux$distdif), breaks=100, freq = FALSE,
@@ -307,9 +312,9 @@ for (i in (5:21)){
                   axes = TRUE, plot = TRUE, labels = FALSE)
   curve(dt(x, df = nrow(dados)), 
         col="darkblue", lwd=2, add=TRUE, yaxt="n")
-  dev.off()
+  #dev.off()
   
-  jpeg(paste("Histograma_Diferenca_Velocidade_", as.character(i),"h.jpg", sep = ""), width = 800, height = 400)
+  #jpeg(paste("Histograma_Diferenca_Velocidade_", as.character(i),"h.jpg", sep = ""), width = 800, height = 400)
   m = mean(aux$veldif)
   std = sqrt(var(aux$veldif))
   grafico1 = hist(scale(aux$veldif), breaks=100, freq = FALSE,
@@ -322,7 +327,7 @@ for (i in (5:21)){
         col="darkblue", lwd=2, add=TRUE, yaxt="n")
   dev.off()
   
-  jpeg(paste("Histograma_Tempo_Relativo_", as.character(i), "h.jpg", sep =""), width = 800, height = 400)
+  #jpeg(paste("Histograma_Tempo_Relativo_", as.character(i), "h.jpg", sep =""), width = 800, height = 400)
   m = mean(aux2$temprelativo)
   std = sqrt(var(aux2$temprelativo))
   grafico1 = hist(scale(aux2$temprelativo), breaks=50, freq = FALSE,
@@ -333,7 +338,7 @@ for (i in (5:21)){
                   axes = TRUE, plot = TRUE, labels = FALSE)
   curve(dt(x, df = nrow(dados)), 
         col="darkblue", lwd=2, add=TRUE, yaxt="n")
-  dev.off()
+  #dev.off()
 }
 
 #boxplot diferenca de temp com os dias
