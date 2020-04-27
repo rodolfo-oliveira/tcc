@@ -27,13 +27,13 @@ plot_moran <- function(
   
   mapa$varI <- scale(mapa@data[,column])
   mapa$lag_varI <- lag.listw(nb2listw(neighbours = poly2nb(mapa)), mapa$varI)
-       
+
   plot(x = mapa$varI,
        y = mapa$lag_varI,
        xlim = xlim,
        ylim = ylim,
        xlab = xlab,
-       ylab = ylab)
+       ylab = ylab, cex.lab=1.4, cex.axis=1.2, cex.main=1.2, cex.sub=1.2)
   abline(h = 0, v = 0)
   abline(lm(mapa$lag_varI ~ mapa$varI), lty = 3, lwd = 2, col = "red")
   
@@ -50,7 +50,7 @@ plot_moran <- function(
 
 #distritos
 
-jpeg(filename = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/MoranIDistritos', width = 960, height = 480)
+jpeg(filename = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/MoranIDistritos.jpeg', width = 960, height = 480)
 layout(matrix(c(1,2), ncol = 2),widths = 1,heights = 2,)
 
 plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Geo/mapa_Origem_diferenca_tempo_distritos.shp',
@@ -69,7 +69,7 @@ plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/
 dev.off()
 
 #areas de ponderacao
-jpeg(filename = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/MoranIAreasPond', width = 960, height = 480)
+jpeg(filename = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/MoranIAreasPond.jpeg', width = 960, height = 480)
 layout(matrix(c(1,2), ncol = 2),widths = 1,heights = 2,)
 
 plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Geo/mapa_Origem_diferenca_tempo_areas_de_ponderacao.shp',

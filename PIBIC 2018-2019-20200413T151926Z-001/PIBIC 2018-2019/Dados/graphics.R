@@ -21,7 +21,7 @@ int.conf.t <- function(x, conf = 0.975){
 return (c(a-error, a+error))
 }
 #Tratamento dos dados --------------------------------------
-dados = read.csv(file = "~/Documents/FGV/TCC/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/Cloud_SQL_Export_2019-06-10 (00_06_00)alt", header = FALSE, col.names = c("ID","Data","Hour","Day", "OrCoords","OrAdress","DestCoords", "DestAdress", "duration","distance", "fare", "mode"))
+dados = read.csv(file = "D:/Pessoal/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/ Dados/Bancos/Cloud_SQL_Export_2019-06-10 (00_06_00)alt", header = FALSE, col.names = c("ID","Data","Hour","Day", "OrCoords","OrAdress","DestCoords", "DestAdress", "duration","distance", "fare", "mode"))
 
 dados = dados[dados$ID>400,]
 
@@ -81,9 +81,9 @@ dev.off()
 
 
 
-dados = read.csv2(file = "~/Documents/FGV/TCC/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_comparacao_medias.csv", dec = ",")
+dados = read.csv2(file = "D:/Pessoal/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_comparacao_medias.csv", dec = ",")
 
-dados2 <- read.csv2(file = "~/Documents/FGV/TCC/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_viagens_pareadas.csv", dec = ",")
+dados2 <- read.csv2(file = "D:/Pessoal/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_viagens_pareadas.csv", dec = ",")
 
 
 dados %>%
@@ -166,7 +166,7 @@ scatterplot(y=dados$tempodif,x=((dados2$distpriv+dados2$distpublico)/2),
      ylab = "Diferenças de tempo",
      pch = 20,
      #span = FALSE,
-     smooth = F,col = "black")
+     smooth = F,col = "black",cex.lab = 1.5)
 
 dev.off()
 jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "TempoRel.jpg", sep = ""), width = 480, height = 480)
@@ -177,7 +177,8 @@ scatterplot(y=dados2$temprelativo,x=(dados2$distpriv+dados2$distpublico)/2,
      pch = 20,
      #span = FALSE,
      smooth = F,
-     col = "black")
+     col = "black",
+     cex.lab = 1.5)
 
 dev.off()
 
