@@ -21,7 +21,7 @@ int.conf.t <- function(x, conf = 0.975){
 return (c(a-error, a+error))
 }
 #Tratamento dos dados --------------------------------------
-dados = read.csv(file = "D:/Pessoal/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/ Dados/Bancos/Cloud_SQL_Export_2019-06-10 (00_06_00)alt", header = FALSE, col.names = c("ID","Data","Hour","Day", "OrCoords","OrAdress","DestCoords", "DestAdress", "duration","distance", "fare", "mode"))
+dados = read.csv(file = "PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/Cloud_SQL_Export_2019-06-10 (00_06_00)alt", header = FALSE, col.names = c("ID","Data","Hour","Day", "OrCoords","OrAdress","DestCoords", "DestAdress", "duration","distance", "fare", "mode"))
 
 dados = dados[dados$ID>400,]
 
@@ -81,9 +81,9 @@ dev.off()
 
 
 
-dados = read.csv2(file = "D:/Pessoal/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_comparacao_medias.csv", dec = ",")
+dados = read.csv2(file = "PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_comparacao_medias.csv", dec = ",")
 
-dados2 <- read.csv2(file = "D:/Pessoal/tcc/PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_viagens_pareadas.csv", dec = ",")
+dados2 <- read.csv2(file = "PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Bancos/banco_viagens_pareadas.csv", dec = ",")
 
 
 dados %>%
@@ -159,14 +159,15 @@ title("Mean of Travel Time Diferences for 1km intervals")
 
 media_dist=(dados2$distpriv+dados2$distpublico)/2
 
-jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "Diferencas.jpg", sep = ""), width = 480, height = 480)
+#jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "Diferencas.jpg", sep = ""), width = 480, height = 480)
 
 scatterplot(y=dados$tempodif,x=((dados2$distpriv+dados2$distpublico)/2),
      xlab = "Média de distâncias entre a viagem pública e a privada",
      ylab = "Diferenças de tempo",
      pch = 20,
-     #span = FALSE,
-     smooth = F,col = "black",cex.lab = 1.5)
+     col = c('orange'),
+     regLine=list(method=lm, lty=1, lwd=2, col='black'),
+     smooth = F,cex.lab = 1.5)
 
 dev.off()
 jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "TempoRel.jpg", sep = ""), width = 480, height = 480)
@@ -177,7 +178,8 @@ scatterplot(y=dados2$temprelativo,x=(dados2$distpriv+dados2$distpublico)/2,
      pch = 20,
      #span = FALSE,
      smooth = F,
-     col = "black",
+     col = c('dark green'),
+     regLine=list(method=lm, lty=1, lwd=2, col='black'),
      cex.lab = 1.5)
 
 dev.off()
