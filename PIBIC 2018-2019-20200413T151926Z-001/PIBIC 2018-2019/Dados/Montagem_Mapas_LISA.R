@@ -217,7 +217,7 @@ dev.off()
 
 #Distribuição espacial das variáveis
 jpeg(filename = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/DistribuicaoVariaveis.jpeg', width = 960, height = 480)
-layout(matrix(c(1,1,2,2), ncol = 2, nrow = 2),widths = 1,heights = 0.5)
+layout(matrix(c(1,1,2,2), ncol = 2, nrow = 2),widths = 1,heights = 1)
 ndiv <- 6
 
 mapa <- readOGR('PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Geo/mapa_Origem_tempo_relativo_distritos.shp')
@@ -226,7 +226,7 @@ var <- mapa@data$Tempo_dif
 # Set the breaks for the thematic map classes
 breaks <- seq(min(var), max(var), (max(var)-min(var))/ndiv)
 np <- findInterval(var, breaks,all.inside = T)
-colors <- c(RColorBrewer::brewer.pal(ndiv,'Greens'))
+colors <- c(RColorBrewer::brewer.pal(ndiv,'Oranges'))
 
 legenda <- c()
 for(i in 2:length(breaks)){
@@ -240,14 +240,15 @@ title(agregLab, cex.main = 2)
 legend(x=-46.55,
        y = -23.7,
        legend = legenda,
-       fill = colors)
+       fill = colors,
+       cex = 1.4)
 
 #tempo relativo
 var <- mapa@data$Temp_rel
 # Set the breaks for the thematic map classes
 breaks <- seq(min(var), max(var), (max(var)-min(var))/ndiv)
 np <- findInterval(var, breaks,all.inside = T)
-colors <- c(RColorBrewer::brewer.pal(ndiv,'Oranges'))
+colors <- c(RColorBrewer::brewer.pal(ndiv,'Greens'))
 
 plot(mapa, col = colors[np])
 agregLab = 'B) Tempo Relativo'
@@ -262,5 +263,7 @@ for(i in 2:length(breaks)){
 legend(x=-46.55,
        y = -23.7,
        legend = legenda,
-       fill = colors)
+       fill = colors,
+       cex = 1.4)
 dev.off()
+
