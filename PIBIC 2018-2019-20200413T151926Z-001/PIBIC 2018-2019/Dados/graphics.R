@@ -159,15 +159,17 @@ title("Mean of Travel Time Diferences for 1km intervals")
 
 media_dist=(dados2$distpriv+dados2$distpublico)/2
 
-#jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "Diferencas.jpg", sep = ""), width = 480, height = 480)
+jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "Diferencas.jpg", sep = ""), width = 480, height = 480)
 
 scatterplot(y=dados$tempodif,x=((dados2$distpriv+dados2$distpublico)/2),
      xlab = "Média de distâncias entre a viagem pública e a privada",
      ylab = "Diferenças de tempo",
      pch = 20,
+     
      col = c('orange'),
      regLine=list(method=lm, lty=1, lwd=2, col='black'),
      smooth = F,cex.lab = 1.5)
+text(paste0('N = ',length(dados$tempodif)),x = 180000,y=16500)
 
 dev.off()
 jpeg(paste("PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/Scatterplot", "TempoRel.jpg", sep = ""), width = 480, height = 480)
@@ -181,8 +183,16 @@ scatterplot(y=dados2$temprelativo,x=(dados2$distpriv+dados2$distpublico)/2,
      col = c('dark green'),
      regLine=list(method=lm, lty=1, lwd=2, col='black'),
      cex.lab = 1.5)
+text(paste0('N = ',length(dados2$temprelativo)),x = 180000,y= 11)
 
 dev.off()
+
+im1 <- imager::load.image('PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/ScatterplotDiferencas.jpg')
+im2 <- imager::load.image('PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/ScatterplotTempoRel.jpg')
+imager::save.image(im = imager::imappend(imlist = list(im1,im2), axis = 'x'),
+                   file = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/graficos/ScatterplotDiferencasTempoRel.jpg',
+                   quality = 1)
+
 
 cor(y=dados$tempodif,x=(dados2$distpriv+dados2$distpublico)/2)
 

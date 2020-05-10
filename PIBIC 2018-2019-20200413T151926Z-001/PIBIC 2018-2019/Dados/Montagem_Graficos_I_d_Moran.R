@@ -14,7 +14,8 @@ plot_moran <- function(
   ylim = c(-6, 6),
   pch = 10,
   agregLab = F,
-  column
+  column,
+  col
 )
   {
   mapa <- readOGR(dsn = OGRdsn)
@@ -30,6 +31,8 @@ plot_moran <- function(
 
   plot(x = mapa$varI,
        y = mapa$lag_varI,
+       pch = pch,
+       col = col,
        xlim = xlim,
        ylim = ylim,
        xlab = xlab,
@@ -39,11 +42,14 @@ plot_moran <- function(
   
   text(x = (mean(xlim) + (xlim[2]-xlim[1])/4),
        y = (ylim[1] + (ylim[2]-ylim[1])/12),
-       paste0('Valor do I de Moran: ', round(as.numeric(morantest$estimate[1]), digits = 4)))
+       paste0('Valor do I de Moran: ', round(as.numeric(morantest$estimate[1]), digits = 4)), cex = 1.2)
   if(agregLab!=F){
     text(x = (xlim[1] + (xlim[2]-xlim[1])/4),
          y = (ylim[2] - 0*(ylim[2]-ylim[1])/60),
          agregLab)
+    text(x = (xlim[1] + (xlim[2]-xlim[1])/4),
+         y = (ylim[2] - 0*(ylim[2]-ylim[1])/60 - 1),
+         paste0('N = ', length(mapa$varI)))
   }
 }
 
@@ -58,14 +64,14 @@ plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/
            ylab = 'Lag de Diferença de Tempos',
            agregLab = 'Distritos',
            pch = 20,
-           column = 4)
+           column = 4,col = 'orange')
 
 plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Geo/mapa_Origem_tempo_relativo_distritos.shp',
            xlab = 'Tempo Relativo',
            ylab = 'Lag de Tempo Relativo',
            agregLab = 'Distritos',
            pch = 20,
-           column = 11)
+           column = 11, col = 'darkgreen')
 dev.off()
 
 #areas de ponderacao
@@ -77,12 +83,12 @@ plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/
            ylab = 'Lag de Diferença de Tempos',
            agregLab = 'Áreas de Ponderação',
            pch = 20,
-           column = 6)
+           column = 6, col = 'orange')
 
 plot_moran(OGRdsn = 'PIBIC 2018-2019-20200413T151926Z-001/PIBIC 2018-2019/Dados/Geo/mapa_Origem_tempo_relativo_areas_de_ponderacao.shp',
            xlab = 'Tempo Relativo',
            ylab = 'Lag de Tempo Relativo',
            agregLab = 'Áreas de Ponderação',
            pch = 20,
-           column = 6)
+           column = 6, col = 'darkgreen')
 dev.off()

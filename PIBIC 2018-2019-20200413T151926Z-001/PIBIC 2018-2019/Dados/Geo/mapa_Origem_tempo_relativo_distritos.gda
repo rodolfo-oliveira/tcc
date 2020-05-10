@@ -13,58 +13,179 @@
                 <time_ids>
                     <id>time 0</id>
                 </time_ids>
-                <var>DENESTAB</var>
-                <var>DENEMPREG</var>
-                <var>DENDOM</var>
-                <var>DENESTMETR</var>
-                <var>DENPTBUS</var>
-                <var>DKMLINBUS</var>
-                <var>DENLINBUS</var>
+                <var>
+                    DENESTAB
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    DENEMPREG
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    DENDOM
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    DENESTMETR
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    DENPTBUS
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    DKMLINBUS
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    DENLINBUS
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>ds_codigo</var>
                 <var>ds_nome</var>
-                <var>V3</var>
-                <var>Temp_rel</var>
+                <var>
+                    V3
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    Temp_rel
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>QTLbus2018</var>
-                <var>KMLIN_2018</var>
+                <var>
+                    KMLIN_2018
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>QPbus_2018</var>
                 <var>Qmetr_2018</var>
-                <var>RENDP2010</var>
-                <var>ARE1</var>
+                <var>
+                    RENDP2010
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    ARE1
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>POP2018</var>
-                <var>DENPOP2018</var>
+                <var>
+                    DENPOP2018
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>DOMP2018</var>
                 <var>ESTAB2016</var>
                 <var>EMP2016</var>
-                <var>PNBRAN2010</var>
-                <var>temp_medio</var>
-                <var>TEMP_5M</var>
-                <var>TEMP_30M</var>
-                <var>TEMP_60M</var>
-                <var>TEMP120M</var>
-                <var>TEMP_121M</var>
-                <var>TEMP_0M</var>
-                <var>PDOMC2010</var>
-                <var>PDOMM2010</var>
-                <var>Tempo_dif</var>
-                <var>LAG_PREDIC</var>
-                <var>LAG_RESIDU</var>
-                <var>LAG_PRDERR</var>
+                <var>
+                    PNBRAN2010
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    temp_medio
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    TEMP_5M
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    TEMP_30M
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    TEMP_60M
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    TEMP120M
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    TEMP_121M
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    TEMP_0M
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    PDOMC2010
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    PDOMM2010
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    Tempo_dif
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LAG_PREDIC
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LAG_RESIDU
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LAG_PRDERR
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>LISA__trel</var>
                 <var>LISA__tdif</var>
                 <var>DUMMETRO</var>
                 <var>DUMCPTM</var>
-                <var>LG_PR__DIF</var>
-                <var>LG_RS__DIF</var>
-                <var>LPRED__DIF</var>
-                <var>LG_PR__REL</var>
-                <var>LG_RS__REL</var>
-                <var>LPRER__REL</var>
-                <var>L_I_TD</var>
+                <var>
+                    LG_PR__DIF
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LG_RS__DIF
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LPRED__DIF
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LG_PR__REL
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LG_RS__REL
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    LPRER__REL
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    L_I_TD
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>L_CL_TD</var>
-                <var>L_P_TD</var>
-                <var>L_I_TR</var>
+                <var>
+                    L_P_TD
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    L_I_TR
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
                 <var>L_CL_TR</var>
-                <var>L_P_TR</var>
+                <var>
+                    L_P_TR
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    OLS_RES_TR
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>
+                    OLS_RES_DT
+                    <displayed_decimals>6</displayed_decimals>
+                </var>
+                <var>L_C_DTOLS</var>
+                <var>L_CTROLS</var>
             </variable_order>
             <custom_classifications/>
             <weights_entries>
@@ -87,7 +208,7 @@
             </weights_entries>
             <default_vars>
                 <default_var>
-                    <name>LG_RS__REL</name>
+                    <name>OLS_RES_TR</name>
                     <time_id>time 0</time_id>
                 </default_var>
                 <default_var>
