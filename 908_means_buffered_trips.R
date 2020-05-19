@@ -8,4 +8,5 @@ means_buffered_trips <- function(bufferId, simulatedDatabase, timeColumn){
     means <- c(means, mean(simulatedDatabase[simulatedDatabase$ID %in% bufferId[[1]][[i]],]@data[,timeColumn]))  
     print(paste0(round(100*i/length(bufferId[[1]]),digits = 2),"%"))
   }
+  return(means)
 }
