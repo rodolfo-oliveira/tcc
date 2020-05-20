@@ -32,5 +32,11 @@ MF_database_comparison <- function(ODDatabaseOrigin,
   aux2 <- ratio_travel_time_buffer_simulated(ODDatabaseOrigin, means)
   
   aux$ratio <- aux2$ratio
+  
+  means <- means_buffered_trips(bufferId = associatedTrips,
+                                simulatedDatabase =  simulatedDatabaseOrigin,
+                                timeColumn = ifelse(publico == T,'distpublico','distpriv'))
+ 
+  aux$distSimulated <- means
   return(aux)
 }
