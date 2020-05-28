@@ -6,7 +6,8 @@ MF_database_comparison <- function(ODDatabaseOrigin,
                                    ODDatabaseDestination,
                                    simulatedDatabaseOrigin,
                                    simulatedDatabaseDestination,
-                                   publico = T){
+                                   publico = T,
+                                   time = F){
   source('503_buffering_functions.R')
   source('504_analysis_functions.R')
   
@@ -21,7 +22,8 @@ MF_database_comparison <- function(ODDatabaseOrigin,
                                             spatialDatabaseODestination = ODDatabaseDestination,
                                             spatialSimulatedDatabaseOrigin = simulatedDatabaseOrigin,
                                             spatialSimulatedDatabaseDestination = simulatedDatabaseDestination,
-                                            bufferSize = bufferSize)
+                                            bufferSize = bufferSize,
+                                            time = time)
   
   means <-  means_buffered_trips(bufferId = associatedTrips,
                                  simulatedDatabase = simulatedDatabaseOrigin,

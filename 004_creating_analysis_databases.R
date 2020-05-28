@@ -2,26 +2,147 @@
 
 source('503_buffering_functions.R')
 
-#assumindo velocidade de 6 km/h ou 100m/min e criterio de 95% das viagens 
-bufferSize <- as.integer(100*quantile(c(database_publico_origem@data$ANDA_O, database_publico_origem@data$ANDA_D), 0.95))
+source('504_analysis_functions.R')
 
 
-count <- count_buffer_trips(spatialDatabaseODOrigin = database_publico_origem,
-                            spatialDatabaseODestination = database_publico_destino,
-                            spatialSimulatedDatabaseOrigin = simulated_database_origem,
-                            spatialSimulatedDatabaseDestination = simulated_database_destino,
-                            bufferSize = bufferSize)
+#comparing databases and mounting analyisis database
 
-summary(count[which(database_publico_origem$MUNI_O==36 & database_publico_origem$MUNI_D==36)])
-hist(count[which(database_publico_origem$MUNI_O==36 & database_publico_origem$MUNI_D==36)])
+#no time restriction----
+#origem
+databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+masterDatabase <- numeric()
+
+for(i in 1:length(databaseNames)){
+  print(databaseNames[i])
+
+  auxDatabase <- eval(as.name(paste0('database_',databaseNames[i],'_origem')))
+  auxDatabase@data<- auxDatabase@data[,c("CRITERIOBR","MODOPRIN","DURACAO","ANDA_O","ANDA_D","H_SAIDA")]
+  
+  
+  
+  aux <- MF_database_comparison(ODDatabaseOrigin = eval(as.name(paste0('database_',databaseNames[i],'_origem'))),
+                                ODDatabaseDestination = eval(as.name(paste0('database_',databaseNames[i],'_destino'))),
+                                simulatedDatabaseOrigin = simulated_database_origem,
+                                simulatedDatabaseDestination = simulated_database_destino,
+                                publico = ifelse(databaseNames[i] == 'publico', T, F))
+  
+  auxDatabase@data$difference <- aux$difference
+  auxDatabase@data$ratio <- aux$ratio
+  auxDatabase@data$simulatedDist <- aux$distSimulated
+  auxDatabase@data$simulatedTime <- aux$simulatedMeasure
+  auxDatabase@data$tipo <- databaseNames[i]
+  
+  if(length(masterDatabase)==0){
+    masterDatabase <- auxDatabase
+  }else{
+    masterDatabase <- raster::bind(masterDatabase, auxDatabase)
+  }
+}
+
+rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseOrigem.shp', layer = 'masterDatabaseOrigem', driver = 'ESRI Shapefile')
 
 
+#destino
+databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+masterDatabase <- numeric()
 
-associatedTrips <- associate_buffer_trips(spatialDatabaseODOrigin = database_publico_origem,
-                                          spatialDatabaseODestination = database_publico_destino,
-                                          spatialSimulatedDatabaseOrigin = simulated_database_origem,
-                                          spatialSimulatedDatabaseDestination = simulated_database_destino,
-                                          bufferSize = bufferSize)
+for(i in 1:length(databaseNames)){
+  print(databaseNames[i])
+  
+  auxDatabase <- eval(as.name(paste0('database_',databaseNames[i],'_destino')))
+  auxDatabase@data<- auxDatabase@data[,c("CRITERIOBR","MODOPRIN","DURACAO","ANDA_O","ANDA_D","H_SAIDA")]
+  
+  
+  
+  aux <- MF_database_comparison(eval(as.name(paste0('database_',databaseNames[i],'_origem'))),
+                                eval(as.name(paste0('database_',databaseNames[i],'_destino'))),
+                                simulated_database_origem,
+                                simulated_database_destino,
+                                publico = ifelse(databaseNames[i] == 'publico', T, F))
+  
+  auxDatabase@data$difference <- aux$difference
+  auxDatabase@data$ratio <- aux$ratio
+  auxDatabase@data$simulatedDist <- aux$distSimulated
+  auxDatabase@data$simulatedTime <- aux$simulatedMeasure
+  auxDatabase@data$tipo <- databaseNames[i]
+  
+  if(length(masterDatabase)==0){
+    masterDatabase <- auxDatabase
+  }else{
+    masterDatabase <- raster::bind(masterDatabase, auxDatabase)
+  }
+}
 
-summary(associatedTrips$IDs[which(database_publico_origem$MUNI_O==36 & database_publico_origem$MUNI_D==36)])
-hist(associatedTrips$IDs[which(database_publico_origem$MUNI_O==36 & database_publico_origem$MUNI_D==36)])
+rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseDestino.shp', layer = 'masterDatabaseDestino', driver = 'ESRI Shapefile')
+
+
+#with time restriction----
+#origem
+databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+masterDatabase <- numeric()
+
+for(i in 1:length(databaseNames)){
+  print(databaseNames[i])
+  
+  auxDatabase <- eval(as.name(paste0('database_',databaseNames[i],'_origem')))
+  auxDatabase@data<- auxDatabase@data[,c("CRITERIOBR","MODOPRIN","DURACAO","ANDA_O","ANDA_D","H_SAIDA")]
+  
+  
+  
+  aux <- MF_database_comparison(ODDatabaseOrigin = eval(as.name(paste0('database_',databaseNames[i],'_origem'))),
+                                ODDatabaseDestination = eval(as.name(paste0('database_',databaseNames[i],'_destino'))),
+                                simulatedDatabaseOrigin = simulated_database_origem,
+                                simulatedDatabaseDestination = simulated_database_destino,
+                                publico = ifelse(databaseNames[i] == 'publico', T, F),
+                                time = T)
+  
+  auxDatabase@data$difference <- aux$difference
+  auxDatabase@data$ratio <- aux$ratio
+  auxDatabase@data$simulatedDist <- aux$distSimulated
+  auxDatabase@data$simulatedTime <- aux$simulatedMeasure
+  auxDatabase@data$tipo <- databaseNames[i]
+  
+  if(length(masterDatabase)==0){
+    masterDatabase <- auxDatabase
+  }else{
+    masterDatabase <- raster::bind(masterDatabase, auxDatabase)
+  }
+}
+
+
+rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseOrigemTimeRes.shp', layer = 'masterDatabaseOrigemTimeRes', driver = 'ESRI Shapefile')
+
+
+#destino
+databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+masterDatabase <- numeric()
+
+for(i in 1:length(databaseNames)){
+  print(databaseNames[i])
+  
+  auxDatabase <- eval(as.name(paste0('database_',databaseNames[i],'_destino')))
+  auxDatabase@data<- auxDatabase@data[,c("CRITERIOBR","MODOPRIN","DURACAO","ANDA_O","ANDA_D","H_SAIDA")]
+  
+  
+  
+  aux <- MF_database_comparison(eval(as.name(paste0('database_',databaseNames[i],'_origem'))),
+                                eval(as.name(paste0('database_',databaseNames[i],'_destino'))),
+                                simulated_database_origem,
+                                simulated_database_destino,
+                                publico = ifelse(databaseNames[i] == 'publico', T, F),
+                                time = T)
+  
+  auxDatabase@data$difference <- aux$difference
+  auxDatabase@data$ratio <- aux$ratio
+  auxDatabase@data$simulatedDist <- aux$distSimulated
+  auxDatabase@data$simulatedTime <- aux$simulatedMeasure
+  auxDatabase@data$tipo <- databaseNames[i]
+  
+  if(length(masterDatabase)==0){
+    masterDatabase <- auxDatabase
+  }else{
+    masterDatabase <- raster::bind(masterDatabase, auxDatabase)
+  }
+}
+
+rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseDestinoTimeRes.shp', layer = 'masterDatabaseDestinoTimeRes', driver = 'ESRI Shapefile')

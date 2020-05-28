@@ -9,8 +9,15 @@ origin_destination_buffer_trip <- function(originSpatialPoint,
   require(sp)
   source('904_pluck_simulated_trip.R')
   
-  origins <- pluck_simulated_trip(originSpatialPoint,simulatedTripsOrigins, bufferSize)
-  destinations <- pluck_simulated_trip(destinationSpatialPoint, simulatedTripsDestinations, bufferSize)
+  origins <- pluck_simulated_trip(spatialPoint = originSpatialPoint,
+                                  spatialDatabase = simulatedTripsOrigins,
+                                  bufferSize = bufferSize,
+                                  time = time)
+  
+  destinations <- pluck_simulated_trip(spatialPoint = destinationSpatialPoint,
+                                       spatialDatabase = simulatedTripsDestinations,
+                                       bufferSize =  bufferSize,
+                                       time = time)
   
   
   
