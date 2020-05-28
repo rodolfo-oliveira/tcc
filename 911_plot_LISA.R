@@ -8,7 +8,8 @@ plot_LISA <- function(
   legenda = F,
   agregLab,
   linhasTransp = F,
-  residual_map = F)
+  residual_map = F,
+  abs = F)
 {
   require(rgdal)
   require(spdep)
@@ -19,15 +20,19 @@ plot_LISA <- function(
   mapa <- readOGR(dsn = OGRdsn)
   
   mapa <- mapa[is.na(mapa@data[,column])==F,]
+  
+  var <- mapa@data[,column]
+  if(abs == T){var <- abs(mapa@data[,column])}
+  
   if(residual_map == F){
-    morantest <- moran.test(x = as.numeric(mapa@data[,column]),
-                            listw = nb2listw(neighbours = poly2nb(mapa)),alternative = 'two.sided')
+    morantest <- moran.test(x = as.numeric(var),
+                            listw = nb2listw(neighbours = poly2nb(mapa)),alternative = 'two.sided', randomisation = T)
     
-    morant <- localmoran(x = as.numeric(mapa@data[,column]),
+    morant <- localmoran(x = as.numeric(var),
                          listw = nb2listw(neighbours = poly2nb(mapa)), alternative = 'two.sided', p.adjust.method = 'holm')
     
     
-    mapa$varI <- scale(mapa@data[,column])
+    mapa$varI <- scale(var)
     mapa$lag_varI <- lag.listw(nb2listw(neighbours = poly2nb(mapa)), mapa$varI)
     
     
@@ -52,7 +57,7 @@ plot_LISA <- function(
     colors <- c("red", "blue", "lightpink", "skyblue2", "white")
     par(mar=c(0,0,2,0))
     plot(mapa, col = colors[np])  #colors[np] manually sets the color for each county
-    title(agregLab, cex.main = 2)
+    title(agregLab, cex.main = 2, line = -2)
     #corredor de onibus
     if(linhasTransp == T){
       
@@ -109,7 +114,7 @@ plot_LISA <- function(
     
     # Assign colors to each map class
     par(mar=c(0,0,2,0))
-    colors <- as.integer(as.character(mapa@data[,column]))
+    colors <- as.integer(as.character(var))
     colors[colors == 0] <- 'white'
     colors[colors == 1] <- 'red'
     colors[colors == 2] <- 'blue'

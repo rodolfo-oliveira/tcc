@@ -13,19 +13,22 @@ plot_moran <- function(
   pch = 10,
   agregLab = F,
   column,
-  col
-)
+  col,
+  abs = F)
 {
   mapa <- readOGR(dsn = OGRdsn)
   mapa <- mapa[is.na(mapa@data[,column])==F,]
   
-  morantest <- moran.test(x = as.numeric(mapa@data[,column]),
-                          listw = nb2listw(neighbours = poly2nb(mapa)))
-  morant <- localmoran(x = as.numeric(mapa@data[,column]),
-                       listw = nb2listw(neighbours = poly2nb(mapa)))
+  var <- mapa@data[,column]
+  if(abs == T){var <- abs(mapa@data[,column])}
+  
+  morantest <- moran.test(x = as.numeric(var),
+                          listw = nb2listw(neighbours = poly2nb(mapa)),alternative = 'two.sided',randomisation = T)
+  morant <- localmoran(x = as.numeric(var),
+                       listw = nb2listw(neighbours = poly2nb(mapa)), alternative = 'two.sided', p.adjust.method = 'holm')
   
   
-  mapa$varI <- scale(mapa@data[,column])
+  mapa$varI <- scale(var)
   mapa$lag_varI <- lag.listw(nb2listw(neighbours = poly2nb(mapa)), mapa$varI)
   
   xlim <- ifelse(abs(min(mapa$varI)) < abs(max(mapa$varI)), abs(max(mapa$varI)), abs(min(mapa$varI)))
