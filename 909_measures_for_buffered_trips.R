@@ -4,7 +4,7 @@ difference_travel_time_buffer_simulated <- function(ODDatabase, meanSimulatedTra
   
   return(data.frame(ODmeasure = 60*(rowSums(ODDatabase@data[,c("DURACAO","ANDA_O","ANDA_D")])),
                     simulatedMeasure = meanSimulatedTravelTimes,
-                    difference = 60*(rowSums(ODDatabase@data[,c("DURACAO","ANDA_O","ANDA_D")]))- meanSimulatedTravelTimes))
+                    difference = meanSimulatedTravelTimes - 60*(rowSums(ODDatabase@data[,c("DURACAO","ANDA_O","ANDA_D")]))))
   
 }
 
@@ -12,6 +12,6 @@ ratio_travel_time_buffer_simulated <- function(ODDatabase, meanSimulatedTravelTi
   
   return(data.frame(ODmeasure = 60*(rowSums(ODDatabase@data[,c("DURACAO","ANDA_O","ANDA_D")])),
                     simulatedMeasure = meanSimulatedTravelTimes,
-                    ratio = 60*(rowSums(ODDatabase@data[,c("DURACAO","ANDA_O","ANDA_D")]))/meanSimulatedTravelTimes - 1))
+                    ratio = meanSimulatedTravelTimes/(60*(rowSums(ODDatabase@data[,c("DURACAO","ANDA_O","ANDA_D")])))))
   
 }

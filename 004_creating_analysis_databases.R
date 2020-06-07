@@ -9,7 +9,7 @@ source('504_analysis_functions.R')
 
 #no time restriction----
 #origem
-databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+databaseNames <- c('privado','publico')
 masterDatabase <- numeric()
 
 for(i in 1:length(databaseNames)){
@@ -39,11 +39,16 @@ for(i in 1:length(databaseNames)){
   }
 }
 
-rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseOrigem.shp', layer = 'masterDatabaseOrigem', driver = 'ESRI Shapefile')
+rgdal::writeOGR(obj = masterDatabase,
+                dsn = 'masterDatabaseOrigem.shp',
+                layer = 'masterDatabaseOrigem', 
+                driver = 'ESRI Shapefile',
+                delete_dsn = T,
+                overwrite_layer = T)
 
 
 #destino
-databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+#databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
 masterDatabase <- numeric()
 
 for(i in 1:length(databaseNames)){
@@ -73,12 +78,17 @@ for(i in 1:length(databaseNames)){
   }
 }
 
-rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseDestino.shp', layer = 'masterDatabaseDestino', driver = 'ESRI Shapefile')
+rgdal::writeOGR(obj = masterDatabase,
+                dsn = 'masterDatabaseDestino.shp',
+                layer = 'masterDatabaseDestino',
+                driver = 'ESRI Shapefile',
+                delete_dsn = T,
+                overwrite_layer = T)
 
 
 #with time restriction----
 #origem
-databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+#databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
 masterDatabase <- numeric()
 
 for(i in 1:length(databaseNames)){
@@ -110,11 +120,16 @@ for(i in 1:length(databaseNames)){
 }
 
 
-rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseOrigemTimeRes.shp', layer = 'masterDatabaseOrigemTimeRes', driver = 'ESRI Shapefile')
+rgdal::writeOGR(obj = masterDatabase,
+                dsn = 'masterDatabaseOrigemTimeRes.shp', 
+                layer = 'masterDatabaseOrigemTimeRes',
+                driver = 'ESRI Shapefile',
+                delete_dsn = T,
+                overwrite_layer = T)
 
 
 #destino
-databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
+#databaseNames <- c('escolar','fretados','privado', 'privado_moto', 'publico')
 masterDatabase <- numeric()
 
 for(i in 1:length(databaseNames)){
@@ -145,4 +160,9 @@ for(i in 1:length(databaseNames)){
   }
 }
 
-rgdal::writeOGR(obj = masterDatabase,dsn = 'masterDatabaseDestinoTimeRes.shp', layer = 'masterDatabaseDestinoTimeRes', driver = 'ESRI Shapefile')
+rgdal::writeOGR(obj = masterDatabase,
+                dsn = 'masterDatabaseDestinoTimeRes.shp', 
+                layer = 'masterDatabaseDestinoTimeRes', 
+                driver = 'ESRI Shapefile',
+                delete_dsn = T,
+                overwrite_layer = T)

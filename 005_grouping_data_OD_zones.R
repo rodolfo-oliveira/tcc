@@ -65,4 +65,6 @@ for(j in DBNames){
 writeOGR(obj = mapa,
          dsn = 'ZonasODDados.shp',
          layer = 'ZonasODDados',
-         driver = 'ESRI Shapefile' )
+         driver = 'ESRI Shapefile',
+         delete_dsn = T,
+         overwrite_layer = T)

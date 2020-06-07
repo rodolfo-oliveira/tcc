@@ -1,5 +1,5 @@
 library(dplyr)
-library(sf)
+library(sp)
 source('502_simulation_processing_functions.R')
 
 simulated_database_origem <- simulation_data_to_sp(origem = T)
