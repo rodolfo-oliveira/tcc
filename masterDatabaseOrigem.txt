@@ -1,0 +1,36 @@
+
+Call:
+lm(formula = mapa$diffrnc ~ as.integer(mapa$PONTO_BR) + as.factor(mapa$tipo) + 
+    mapa$DURACAOOD + as.factor(mapa$GRAU_INS) + mapa$RENDA_FA + 
+    as.factor(mapa$CD_ATIVI))
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-5144.1  -353.4   -17.7   284.4  9868.5 
+
+Coefficients:
+                              Estimate Std. Error  t value Pr(>|t|)    
+(Intercept)                  2.195e+02  1.889e+01   11.622  < 2e-16 ***
+as.integer(mapa$PONTO_BR)    8.268e-01  4.764e-01    1.736 0.082634 .  
+as.factor(mapa$tipo)publico  1.170e+03  8.214e+00  142.414  < 2e-16 ***
+mapa$DURACAOOD              -4.693e-01  1.882e-03 -249.388  < 2e-16 ***
+as.factor(mapa$GRAU_INS)2   -1.763e+01  1.722e+01   -1.024 0.305999    
+as.factor(mapa$GRAU_INS)3   -1.114e+01  1.640e+01   -0.679 0.496858    
+as.factor(mapa$GRAU_INS)4    3.444e+01  1.479e+01    2.329 0.019837 *  
+as.factor(mapa$GRAU_INS)5   -5.941e+01  1.574e+01   -3.775 0.000160 ***
+mapa$RENDA_FA               -2.374e-03  7.745e-04   -3.065 0.002178 ** 
+as.factor(mapa$CD_ATIVI)2   -5.742e+01  1.601e+01   -3.586 0.000336 ***
+as.factor(mapa$CD_ATIVI)3   -6.371e+01  5.640e+01   -1.130 0.258657    
+as.factor(mapa$CD_ATIVI)4   -1.107e+02  1.019e+01  -10.865  < 2e-16 ***
+as.factor(mapa$CD_ATIVI)5   -5.179e+01  1.467e+01   -3.530 0.000416 ***
+as.factor(mapa$CD_ATIVI)6   -1.024e+02  2.649e+01   -3.866 0.000111 ***
+as.factor(mapa$CD_ATIVI)7   -7.285e+01  1.689e+01   -4.314  1.6e-05 ***
+as.factor(mapa$CD_ATIVI)8   -9.848e+01  1.184e+01   -8.316  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 777.4 on 64633 degrees of freedom
+  (1546 observations deleted due to missingness)
+Multiple R-squared:  0.4975,	Adjusted R-squared:  0.4974 
+F-statistic:  4266 on 15 and 64633 DF,  p-value: < 2.2e-16
+

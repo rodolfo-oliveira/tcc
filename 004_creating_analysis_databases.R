@@ -16,7 +16,7 @@ for(i in 1:length(databaseNames)){
   print(databaseNames[i])
 
   auxDatabase <- eval(as.name(paste0('database_',databaseNames[i],'_origem')))
-  auxDatabase@data<- auxDatabase@data[,c("CRITERIOBR","MODOPRIN","DURACAO","ANDA_O","ANDA_D","H_SAIDA")]
+  #auxDatabase@data<- auxDatabase@data[,c("CRITERIOBR","MODOPRIN","DURACAO","ANDA_O","ANDA_D","H_SAIDA")]
   
   
   
