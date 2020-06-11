@@ -1,36 +1,37 @@
 
 Call:
-lm(formula = mapa$diffrnc ~ as.integer(mapa$PONTO_BR) + as.factor(mapa$tipo) + 
-    mapa$DURACAOOD + as.factor(mapa$GRAU_INS) + mapa$RENDA_FA + 
-    as.factor(mapa$CD_ATIVI))
+lm(formula = diffrnc ~ PONTO_BR + RENDA_FA + GRAU_INS4 + GRAU_INS5 + 
+    CD_ATIVI2 + CD_ATIVI4 + CD_ATIVI5 + CD_ATIVI6 + CD_ATIVI7 + 
+    CD_ATIVI8 + DURACAOOD + tipopublico, data = mapa@data[, colnames(mapa@data) %in% 
+    c("ZONA", "MOTIVO_D1", "tipoprivado", "GRAU_INS1", "CD_ATIVI1", 
+        "smltdTm") == F])
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--6071.6  -375.6   -21.6   315.6  7912.9 
+-6066.0  -378.1   -21.6   319.0  8348.7 
 
 Coefficients:
-                              Estimate Std. Error  t value Pr(>|t|)    
-(Intercept)                  1.883e+02  2.205e+01    8.540  < 2e-16 ***
-as.integer(mapa$PONTO_BR)    1.430e+00  5.550e-01    2.577 0.009961 ** 
-as.factor(mapa$tipo)publico  1.140e+03  9.532e+00  119.628  < 2e-16 ***
-mapa$DURACAOOD              -4.796e-01  2.218e-03 -216.189  < 2e-16 ***
-as.factor(mapa$GRAU_INS)2   -5.436e+00  2.006e+01   -0.271 0.786357    
-as.factor(mapa$GRAU_INS)3    9.575e+00  1.912e+01    0.501 0.616473    
-as.factor(mapa$GRAU_INS)4    6.173e+01  1.725e+01    3.579 0.000345 ***
-as.factor(mapa$GRAU_INS)5   -3.083e+01  1.837e+01   -1.678 0.093378 .  
-mapa$RENDA_FA               -2.973e-03  8.962e-04   -3.317 0.000910 ***
-as.factor(mapa$CD_ATIVI)2   -4.595e+01  1.860e+01   -2.470 0.013512 *  
-as.factor(mapa$CD_ATIVI)3   -2.770e+01  6.564e+01   -0.422 0.673046    
-as.factor(mapa$CD_ATIVI)4   -1.049e+02  1.178e+01   -8.904  < 2e-16 ***
-as.factor(mapa$CD_ATIVI)5   -3.921e+01  1.708e+01   -2.295 0.021711 *  
-as.factor(mapa$CD_ATIVI)6   -6.745e+01  3.069e+01   -2.198 0.027935 *  
-as.factor(mapa$CD_ATIVI)7   -8.064e+01  1.947e+01   -4.143 3.43e-05 ***
-as.factor(mapa$CD_ATIVI)8   -7.961e+01  1.390e+01   -5.725 1.04e-08 ***
+              Estimate Std. Error  t value Pr(>|t|)    
+(Intercept)  1.892e+02  1.873e+01   10.104  < 2e-16 ***
+PONTO_BR     1.431e+00  5.731e-01    2.498 0.012505 *  
+RENDA_FA    -3.113e-03  9.273e-04   -3.357 0.000789 ***
+GRAU_INS4    5.873e+01  1.103e+01    5.325 1.01e-07 ***
+GRAU_INS5   -3.236e+01  1.256e+01   -2.576 0.009996 ** 
+CD_ATIVI2   -4.442e+01  1.927e+01   -2.305 0.021163 *  
+CD_ATIVI4   -9.858e+01  1.220e+01   -8.083 6.44e-16 ***
+CD_ATIVI5   -3.641e+01  1.766e+01   -2.062 0.039171 *  
+CD_ATIVI6   -6.719e+01  2.848e+01   -2.359 0.018308 *  
+CD_ATIVI7   -7.384e+01  2.022e+01   -3.652 0.000260 ***
+CD_ATIVI8   -8.574e+01  1.418e+01   -6.048 1.47e-09 ***
+DURACAOOD   -4.781e-01  2.298e-03 -208.093  < 2e-16 ***
+tipopublico  1.130e+03  9.835e+00  114.893  < 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 807 on 51078 degrees of freedom
-  (1243 observations deleted due to missingness)
-Multiple R-squared:  0.4858,	Adjusted R-squared:  0.4856 
-F-statistic:  3217 on 15 and 51078 DF,  p-value: < 2.2e-16
+Residual standard error: 813 on 48241 degrees of freedom
+  (1174 observations deleted due to missingness)
+Multiple R-squared:  0.4809,	Adjusted R-squared:  0.4808 
+F-statistic:  3725 on 12 and 48241 DF,  p-value: < 2.2e-16
 
+   PONTO_BR    RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI2   CD_ATIVI4   CD_ATIVI5   CD_ATIVI6   CD_ATIVI7   CD_ATIVI8   DURACAOOD tipopublico 
+   3.343257    2.555799    1.972287    2.812395    1.055025    1.085188    1.039812    1.147167    1.043433    1.422191    1.654601    1.759361 

@@ -17,16 +17,18 @@ plot_LISA <- function(
   require(sp)
   require(ggplot2)
   #reference: http://rstudio-pubs-static.s3.amazonaws.com/4938_b5fc230d586c48b291627ff6ea484d2e.html
-  mapa <- readOGR(dsn = OGRdsn)
+  mapaMor <- readOGR(dsn = OGRdsn, encoding = 'UTF-8')
   
-  mapa <- mapa[is.na(mapa@data[,column])==F,]
+  mapa <- mapaMor[is.na(mapaMor@data[,column])==F,]
   
   var <- mapa@data[,column]
   if(abs == T){var <- abs(mapa@data[,column])}
   
   if(residual_map == F){
     morantest <- moran.test(x = as.numeric(var),
-                            listw = nb2listw(neighbours = poly2nb(mapa)),alternative = 'two.sided', randomisation = T)
+                            listw = nb2listw(neighbours = poly2nb(mapa)),
+                            alternative = 'two.sided',adjust.n = T,
+                            randomisation = T)
     
     morant <- localmoran(x = as.numeric(var),
                          listw = nb2listw(neighbours = poly2nb(mapa)), alternative = 'two.sided', p.adjust.method = 'holm')
@@ -35,26 +37,34 @@ plot_LISA <- function(
     mapa$varI <- scale(var)
     mapa$lag_varI <- lag.listw(nb2listw(neighbours = poly2nb(mapa)), mapa$varI)
     
-    
+
+  
+
     
     mapa$quad_sig <- NA
     mapa@data[(mapa$varI >= 0 & mapa$lag_varI >= 0) & (morant[, 5] <= 0.05), "quad_sig"] <- 1
     mapa@data[(mapa$varI <= 0 & mapa$lag_varI <= 0) & (morant[, 5] <= 0.05), "quad_sig"] <- 2
     mapa@data[(mapa$varI >= 0 & mapa$lag_varI <= 0) & (morant[, 5] <= 0.05), "quad_sig"] <- 3
     mapa@data[(mapa$varI >= 0 & mapa$lag_varI <= 0) & (morant[, 5] <= 0.05), "quad_sig"] <- 4
-    mapa@data[(mapa$varI <= 0 & mapa$lag_varI >= 0) & (morant[, 5] <= 0.05), "quad_sig"] <- 5  #WE ASSIGN A 5 TO ALL NON-SIGNIFICANT OBSERVATIONS
+    mapa@data[(morant[, 5] > 0.05), "quad_sig"] <- 5  #WE ASSIGN A 5 TO ALL NON-SIGNIFICANT OBSERVATIONS
+    
+    
+    mapa <- merge(mapaMor, mapa[,c("NumerZn","varI","lag_varI", "quad_sig")], by = 'NumerZn', all.x = T)
+    
+    mapa@data[is.na(mapa$varI),'quad_sig'] <- 6
+    
     
     # Set the breaks for the thematic map classes
-    breaks <- seq(1, 5, 1)
+    breaks <- seq(1, 6, 1)
     
     # Set the corresponding labels for the thematic map classes
-    labels <- c("Alto-Alto", "Baixo-Baixo", "Alto-Baixo", "Baixo-Alto", "Não Significante")
+    labels <- c("Alto-Alto", "Baixo-Baixo", "Alto-Baixo", "Baixo-Alto", "Não Significante", "Sem dados")
     
     # see ?findInterval - This is necessary for making a map
     np <- findInterval(mapa$quad_sig, breaks)
     
     # Assign colors to each map class
-    colors <- c("red", "blue", "lightpink", "skyblue2", "white")
+    colors <- c("red", "blue", "lightpink", "skyblue2", "white", "darkgrey")
     par(mar=c(0,0,2,0))
     plot(mapa, col = colors[np])  #colors[np] manually sets the color for each county
     title(agregLab, cex.main = 2, line = -2)

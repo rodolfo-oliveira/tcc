@@ -19,7 +19,7 @@ associate_buffer_trips <- function(spatialDatabaseODOrigin,
                                           time = time)
     
     result$IDs[i]  <- list(aux@data$ID)
-    print(paste0(round(100*i/length(spatialDatabaseODOrigin), digits = 2), "%"))
+    print(paste0(round(100*i/length(spatialDatabaseODOrigin), digits = 2), "% - associando base de dados"))
   }  
   return(result)
 }

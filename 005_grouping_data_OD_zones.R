@@ -67,4 +67,4 @@ writeOGR(obj = mapa,
          layer = 'ZonasODDados',
          driver = 'ESRI Shapefile',
          delete_dsn = T,
-         overwrite_layer = T)
+         overwrite_layer = T, encoding = 'UTF-8')

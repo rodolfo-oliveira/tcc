@@ -10,5 +10,7 @@ source('005_grouping_data_OD_zones.R', encoding = 'UTF-8')
 
 source('006_plotting_LISA_Moran.R', encoding = 'UTF-8')
 
+source('007_modelling.R', encoding = 'UTF-8')
+
 #filtering time of high traffic
 

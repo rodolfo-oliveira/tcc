@@ -29,7 +29,7 @@ for(i in 1:length(nomes)){
             column = siglas[i],
             legenda = T,
             agregLab = nomes[i],
-            linhasTransp = F,abs = T)
+            linhasTransp = F,abs = F)
   dev.off()
   
   
@@ -39,7 +39,7 @@ for(i in 1:length(nomes)){
              xlab = 'Diferença de Tempos',
              ylab = 'Lag da Diferença de Tempos',
              column = siglas[i],
-             agregLab = nomes[i],col = 'black',abs = T)
+             agregLab = nomes[i],col = 'black',abs = F)
   dev.off()
 }
 

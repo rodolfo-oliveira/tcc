@@ -24,7 +24,8 @@ for(i in 1:length(databaseNames)){
                                 ODDatabaseDestination = eval(as.name(paste0('database_',databaseNames[i],'_destino'))),
                                 simulatedDatabaseOrigin = simulated_database_origem,
                                 simulatedDatabaseDestination = simulated_database_destino,
-                                publico = ifelse(databaseNames[i] == 'publico', T, F))
+                                publico = ifelse(databaseNames[i] == 'publico', T, F),
+                                time = F)
   
   auxDatabase@data$difference <- aux$difference
   auxDatabase@data$ratio <- aux$ratio
@@ -63,7 +64,8 @@ for(i in 1:length(databaseNames)){
                                 eval(as.name(paste0('database_',databaseNames[i],'_destino'))),
                                 simulated_database_origem,
                                 simulated_database_destino,
-                                publico = ifelse(databaseNames[i] == 'publico', T, F))
+                                publico = ifelse(databaseNames[i] == 'publico', T, F),
+                                time = F)
   
   auxDatabase@data$difference <- aux$difference
   auxDatabase@data$ratio <- aux$ratio
