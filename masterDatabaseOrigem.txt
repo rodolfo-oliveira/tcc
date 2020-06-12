@@ -4,33 +4,27 @@ lm(formula = myForm, data = mapa@data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--5090.9  -354.9   -18.0   283.8  9810.1 
+-5055.2  -353.5   -17.1   284.7  9855.9 
 
 Coefficients:
               Estimate Std. Error  t value Pr(>|t|)    
-(Intercept)  2.862e+02  1.109e+01   25.798  < 2e-16 ***
-RENDA_FA    -1.372e-03  5.285e-04   -2.595  0.00946 ** 
-GRAU_INS4    5.191e+01  8.735e+00    5.943 2.81e-09 ***
-GRAU_INS5   -4.001e+01  9.387e+00   -4.262 2.03e-05 ***
-CD_ATIVI2   -4.889e+01  1.577e+01   -3.101  0.00193 ** 
-CD_ATIVI4   -7.948e+01  1.070e+01   -7.431 1.09e-13 ***
-CD_ATIVI6   -5.094e+01  2.377e+01   -2.143  0.03210 *  
-CD_ATIVI7   -3.579e+01  1.692e+01   -2.115  0.03441 *  
-CD_ATIVI8   -5.353e+01  1.195e+01   -4.478 7.54e-06 ***
-MOTIVO_D2   -9.290e+01  1.171e+01   -7.931 2.20e-15 ***
-MOTIVO_D3   -9.762e+01  7.587e+00  -12.867  < 2e-16 ***
-MOTIVO_D4   -4.384e+01  1.803e+01   -2.432  0.01503 *  
-MOTIVO_D5   -8.933e+01  1.135e+01   -7.873 3.51e-15 ***
-DURACAOOD   -4.709e-01  1.860e-03 -253.179  < 2e-16 ***
-tipopublico  1.166e+03  7.906e+00  147.467  < 2e-16 ***
+(Intercept)  2.475e+02  1.025e+01   24.151  < 2e-16 ***
+RENDA_FA    -1.310e-03  5.284e-04   -2.479 0.013176 *  
+GRAU_INS4    5.826e+01  8.430e+00    6.911 4.85e-12 ***
+GRAU_INS5   -3.363e+01  8.970e+00   -3.749 0.000178 ***
+CD_ATIVI2   -4.315e+01  1.570e+01   -2.749 0.005983 ** 
+CD_ATIVI4   -6.388e+01  1.089e+01   -5.864 4.55e-09 ***
+CD_ATIVI8   -3.932e+01  1.254e+01   -3.136 0.001712 ** 
+MOTIVO2     -6.799e+01  1.008e+01   -6.748 1.51e-11 ***
+MOTIVO3     -6.831e+01  7.786e+00   -8.773  < 2e-16 ***
+DURACAOOD   -4.727e-01  1.885e-03 -250.828  < 2e-16 ***
+tipopublico  1.168e+03  7.904e+00  147.737  < 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 775.6 on 66180 degrees of freedom
-Multiple R-squared:  0.5007,	Adjusted R-squared:  0.5006 
-F-statistic:  4740 on 14 and 66180 DF,  p-value: < 2.2e-16
+Residual standard error: 776.3 on 66184 degrees of freedom
+Multiple R-squared:  0.4999,	Adjusted R-squared:  0.4998 
+F-statistic:  6615 on 10 and 66184 DF,  p-value: < 2.2e-16
 
-   RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI2   CD_ATIVI4   CD_ATIVI6   CD_ATIVI7   CD_ATIVI8   MOTIVO_D2   MOTIVO_D3   MOTIVO_D4   MOTIVO_D5   DURACAOOD 
-   1.245223    1.876389    2.363882    1.044921    1.230212    1.152455    1.074592    1.512858    1.577697    1.571692    1.138548    1.505849    1.680206 
-tipopublico 
-   1.708728 
+   RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI2   CD_ATIVI4   CD_ATIVI8     MOTIVO2     MOTIVO3   DURACAOOD tipopublico 
+   1.242708    1.744935    2.154994    1.034234    1.274118    1.662198    1.754248    1.474035    1.722227    1.704991 

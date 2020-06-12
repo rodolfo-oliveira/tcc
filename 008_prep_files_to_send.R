@@ -20,7 +20,7 @@ for(i in 1:length(filtros)){
   
   mapa$DURACAOOD <- (mapa$DURACAO + mapa$ANDA_D + mapa$ANDA_O)*60
   
-  mapa@data <- mapa@data[,c("diffrnc","ZONA","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO_D","DURACAOOD","tipo",'smltdTm')]
+  mapa@data <- mapa@data[,c("diffrnc","ZONA","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO","DURACAOOD","tipo",'smltdTm')]
   
   mapa <- mapa[is.na(mapa@data$diffrnc) != T,]
   writeOGR(mapa,

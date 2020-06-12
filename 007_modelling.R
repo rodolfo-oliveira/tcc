@@ -44,18 +44,20 @@ for(i in names){
   mapaAux <- rbind(mapaAux[mapaAux$MODOPRIN %in% 9:12,], mapaAux[mapaAux$MODOPRIN %in% 1:6,])
   
   mapaAux %>%
-    select(ZONA,PONTO_BR, RENDA_FA, GRAU_INS, CD_ATIVI,MOTIVO_D) -> mapaAux
+    select(ZONA,PONTO_BR, RENDA_FA, GRAU_INS, CD_ATIVI,MOTIVO_D, MOTIVO_O) -> mapaAux
+  
+  #outros
+  mapaAux$MOTIVO <- 3
+  
   
   #trabalho 
-  mapaAux$MOTIVO_D[mapaAux$MOTIVO_D %in% c(1,2,3)] <- 1
+  mapaAux$MOTIVO[(mapaAux$MOTIVO_D %in% c(1,2,3) & mapaAux$MOTIVO_O %in% c(8)) |
+                     (mapaAux$MOTIVO_O %in% c(1,2,3) & mapaAux$MOTIVO_D %in% c(8))] <- 1
   # escola
-  mapaAux$MOTIVO_D[mapaAux$MOTIVO_D %in% c(4)] <- 2
-  #residencia
-  mapaAux$MOTIVO_D[mapaAux$MOTIVO_D %in% c(8)] <- 3
-  #Lazer
-  mapaAux$MOTIVO_D[mapaAux$MOTIVO_D %in% c(7)] <- 4
-  #outros
-  mapaAux$MOTIVO_D[mapaAux$MOTIVO_D %in% c(5,6,9,10,11)] <- 5
+  mapaAux$MOTIVO[(mapaAux$MOTIVO_D %in% c(4) & mapaAux$MOTIVO_O %in% c(8)) |
+                   (mapaAux$MOTIVO_O %in% c(4) & mapaAux$MOTIVO_D %in% c(8))] <- 2
+
+
   
   mapa@data <- bind_cols(mapa@data, mapaAux)
   
@@ -80,7 +82,7 @@ for(i in names){
   mapa <- mapa[is.na(mapa@data$diffrnc) != T,]
   
   mapa$DURACAOOD <- 60*(mapa$DURACAO + mapa$ANDA_D + mapa$ANDA_O)
-  mapa@data <- mapa@data[,c("diffrnc","ZONA","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO_D","DURACAOOD","tipo",'smltdTm')]
+  mapa@data <- mapa@data[,c("diffrnc","ZONA","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO","DURACAOOD","tipo",'smltdTm')]
   
   mapa <- mapa[sample(1:nrow(mapa)), ]
   
@@ -106,7 +108,7 @@ for(i in names){
     points(x,y, pch = 19, col = my_cols[mapa@data$tipo], cex = 0.1)
   }
   # Create the plots
-  jpeg(filename = paste0(stringr::str_remove(i,'.shp'),"correlacao.jpeg"), width = 900, height = 600,quality = 100)
+  jpeg(filename = paste0(stringr::str_remove(i,'.shp'),"correlacao.jpeg"), width = 750, height = 500,quality = 100)
   pairs(mapa@data[,c("diffrnc","PONTO_BR","RENDA_FA","DURACAOOD")], #main = '',
         labels = c('Diferença', "Pontuação Critério Brasil",'Renda Familiar','Duração viagem OD'),  cex.labels =  1.5,
         lower.panel = panel.cor,
@@ -118,24 +120,15 @@ for(i in names){
               fill=plot_colors,horiz = T)
   dev.off()
 
-  #trabalho 
-  mapa$MOTIVO_D[mapa$MOTIVO_D %in% c(1,2,3)] <- 1
-  # escola
-  mapa$MOTIVO_D[mapa$MOTIVO_D %in% c(4)] <- 2
-  #residencia
-  mapa$MOTIVO_D[mapa$MOTIVO_D %in% c(8)] <- 3
-  #Lazer
-  mapa$MOTIVO_D[mapa$MOTIVO_D %in% c(7)] <- 4
-  #outros
-  mapa$MOTIVO_D[mapa$MOTIVO_D %in% c(5,6,9,10,11)] <- 5
+
   
   #modeling of data
   mapa$GRAU_INS <- as.factor(mapa$GRAU_INS)
   mapa$CD_ATIVI <- as.factor(mapa$CD_ATIVI)
-  mapa$MOTIVO_D <- as.factor(mapa$MOTIVO_D)
+  mapa$MOTIVO <- as.factor(mapa$MOTIVO)
   mapa$tipo <- as.factor(mapa$tipo)
  # mapa$PONTO_BR[is.na(mapa$PONTO_BR)]  <- mean(mapa$PONTO_BR, na.rm = T)
-  
+  mapa@data <- mapa@data[,colnames(mapa@data) %in% c("MOTIVO_D","MOTIVO_O")==F]
   
   
   mapa@data <- dummy.data.frame(data = mapa@data)
@@ -144,7 +137,7 @@ for(i in names){
   
   
   
-  modelo <- lm(data = mapa@data[,colnames(mapa@data) %in% c("ZONA","MOTIVO_D1","tipoprivado","GRAU_INS1","CD_ATIVI1", "smltdTm")==F], formula = diffrnc ~. )
+  modelo <- lm(data = mapa@data[,colnames(mapa@data) %in% c("ZONA","MOTIVO1","tipoprivado","GRAU_INS1","CD_ATIVI1", "smltdTm")==F], formula = diffrnc ~. )
   modelo <- step(modelo,trace = T)
   
   
@@ -177,7 +170,7 @@ for(i in names){
     summ <- summary(modelo)
     pvals <- summ[[4]][, 4]
     not_significant <- character()
-    not_significant <- names(which(pvals > 0.1))
+    not_significant <- names(which(pvals > 0.05))
     not_significant <- not_significant[!not_significant %in% "(Intercept)"]
   }
   summary(modelo)
@@ -194,99 +187,99 @@ for(i in names){
 #spatial modelling
 
 #reagionalizing variables----
-mapa <- readOGR('ZonasODDados.shp', encoding = "UTF-8")
-mapaAux <- foreign::read.dbf('OD 2017/Banco de dados/OD_2017.dbf')
-mapaAux <- rbind(mapaAux[mapaAux$MODOPRIN %in% 9:12,], mapaAux[mapaAux$MODOPRIN %in% 1:6,])
-
-mapaAux %>%
-  select(ZONA,PONTO_BR, RENDA_FA, GRAU_INS, CD_ATIVI, DURACAO, ANDA_D, ANDA_O) -> mapaAux
-
-for(i in 1:length(mapa)){
-  
-  aux <- mapaAux[mapaAux$ZONA==i,]
-  
-  DURACAOOD <- mean((aux$DURACAO+aux$ANDA_D+aux$ANDA_O)*60)
-  ptBR <- mean(aux$PONTO_BR, na.rm = T)
-  rendaM <- mean(aux$RENDA_FA, na.rm = T)
-  
-  aux %>%
-    group_by(GRAU_INS) %>%
-    summarise(perc = n()) -> GInst
-  
-  GInst$perc <- GInst$perc/sum(GInst$perc)
-  
-  for(j in 2:5){
-    assign(paste0(names(GInst)[1],j),value = ifelse(length(GInst$perc[GInst$GRAU_INS == j]) == 0,0,GInst$perc[GInst$GRAU_INS == j]))
-    }
-
-  aux %>%
-    group_by(CD_ATIVI) %>%
-    summarise(perc = n()) -> CDAtiv
-  
-  CDAtiv$perc <- CDAtiv$perc/sum(CDAtiv$perc)
-  
-  for(j in 2:8){
-    assign(paste0(names(CDAtiv)[1],j),value = ifelse(length(CDAtiv$perc[CDAtiv$CD_ATIVI == j]) == 0,0,CDAtiv$perc[CDAtiv$CD_ATIVI == j]))
-  }  
-  
-  mapa[mapa$NumerZn==i,"RENDAMED"] <- rendaM
-  mapa[mapa$NumerZn==i,"PTBRMED"] <- ptBR
-  mapa[mapa$NumerZn==i,"DURACAOOD"] <- DURACAOOD
-  if(is.na(GRAU_INS2)!= T){mapa[mapa$NumerZn==i,"GRINS2"] <- GRAU_INS2}
-  if(is.na(GRAU_INS3)!= T){mapa[mapa$NumerZn==i,"GRINS3"] <- GRAU_INS3}
-  if(is.na(GRAU_INS4)!= T){mapa[mapa$NumerZn==i,"GRINS4"] <- GRAU_INS4}
-  if(is.na(GRAU_INS5)!= T){mapa[mapa$NumerZn==i,"GRINS5"] <- GRAU_INS5}
-  if(is.na(CD_ATIVI2)!= T){mapa[mapa$NumerZn==i,"CDATIV2"] <- CD_ATIVI2}
-  if(is.na(CD_ATIVI3)!= T){mapa[mapa$NumerZn==i,"CDATIV3"] <- CD_ATIVI3}
-  if(is.na(CD_ATIVI4)!= T){mapa[mapa$NumerZn==i,"CDATIV4"] <- CD_ATIVI4}
-  if(is.na(CD_ATIVI5)!= T){mapa[mapa$NumerZn==i,"CDATIV5"] <- CD_ATIVI5}
-  if(is.na(CD_ATIVI6)!= T){mapa[mapa$NumerZn==i,"CDATIV6"] <- CD_ATIVI6}
-  if(is.na(CD_ATIVI7)!= T){mapa[mapa$NumerZn==i,"CDATIV7"] <- CD_ATIVI7}
-  if(is.na(CD_ATIVI8)!= T){mapa[mapa$NumerZn==i,"CDATIV8"] <- CD_ATIVI8}
-  rm(list = c("GRAU_INS2",
-       "GRAU_INS3",
-       "GRAU_INS4",
-       "GRAU_INS5",
-       "CD_ATIVI2",
-       "CD_ATIVI3",
-       "CD_ATIVI4",
-       "CD_ATIVI5",
-       "CD_ATIVI6",
-       "CD_ATIVI7",
-       "CD_ATIVI8",
-       "rendaM", 
-       "ptBR"))
-  }
-
-writeOGR(mapa, dsn = 'ZonasODDados.shp',
-         layer = 'ZonasODDados',
-         encoding = "UTF-8",
-         driver = "ESRI Shapefile",
-         overwrite_layer = T,
-         delete_dsn = T)
-
-
-#modeling variables ----
-
-mapa <- readOGR('ZonasODDados.shp', encoding = "UTF-8")
-
-mapa %>%
-  lm(formula = dfDstPb ~ 
-       RENDAMED +
-#       PTBRMED + 
-       DURACAOOD +
-#       GRINS2 +
-       GRINS3 +
-       GRINS4 +
-#       GRINS5 +
-       CDATIV2 +
-       CDATIV3 +
-       CDATIV4 +
-       CDATIV5 +
-       CDATIV6 +
-       CDATIV7 +
-       CDATIV8) -> modelo
-
-summary(modelo)
-
-vif(modelo)
+#mapa <- readOGR('ZonasODDados.shp', encoding = "UTF-8")
+#mapaAux <- foreign::read.dbf('OD 2017/Banco de dados/OD_2017.dbf')
+#mapaAux <- rbind(mapaAux[mapaAux$MODOPRIN %in% 9:12,], mapaAux[mapaAux$MODOPRIN %in% 1:6,])
+#
+#mapaAux %>%
+#  select(ZONA,PONTO_BR, RENDA_FA, GRAU_INS, CD_ATIVI, DURACAO, ANDA_D, ANDA_O) -> mapaAux
+#
+#for(i in 1:length(mapa)){
+#  
+#  aux <- mapaAux[mapaAux$ZONA==i,]
+#  
+#  DURACAOOD <- mean((aux$DURACAO+aux$ANDA_D+aux$ANDA_O)*60)
+#  ptBR <- mean(aux$PONTO_BR, na.rm = T)
+#  rendaM <- mean(aux$RENDA_FA, na.rm = T)
+#  
+#  aux %>%
+#    group_by(GRAU_INS) %>%
+#    summarise(perc = n()) -> GInst
+#  
+#  GInst$perc <- GInst$perc/sum(GInst$perc)
+#  
+#  for(j in 2:5){
+#    assign(paste0(names(GInst)[1],j),value = ifelse(length(GInst$perc[GInst$GRAU_INS == j]) == 0,0,GInst$perc[GInst$GRAU_INS == j]))
+#    }
+#
+#  aux %>%
+#    group_by(CD_ATIVI) %>%
+#    summarise(perc = n()) -> CDAtiv
+#  
+#  CDAtiv$perc <- CDAtiv$perc/sum(CDAtiv$perc)
+#  
+#  for(j in 2:8){
+#    assign(paste0(names(CDAtiv)[1],j),value = ifelse(length(CDAtiv$perc[CDAtiv$CD_ATIVI == j]) == 0,0,CDAtiv$perc[CDAtiv$CD_ATIVI == j]))
+#  }  
+#  
+#  mapa[mapa$NumerZn==i,"RENDAMED"] <- rendaM
+#  mapa[mapa$NumerZn==i,"PTBRMED"] <- ptBR
+#  mapa[mapa$NumerZn==i,"DURACAOOD"] <- DURACAOOD
+#  if(is.na(GRAU_INS2)!= T){mapa[mapa$NumerZn==i,"GRINS2"] <- GRAU_INS2}
+#  if(is.na(GRAU_INS3)!= T){mapa[mapa$NumerZn==i,"GRINS3"] <- GRAU_INS3}
+#  if(is.na(GRAU_INS4)!= T){mapa[mapa$NumerZn==i,"GRINS4"] <- GRAU_INS4}
+#  if(is.na(GRAU_INS5)!= T){mapa[mapa$NumerZn==i,"GRINS5"] <- GRAU_INS5}
+#  if(is.na(CD_ATIVI2)!= T){mapa[mapa$NumerZn==i,"CDATIV2"] <- CD_ATIVI2}
+#  if(is.na(CD_ATIVI3)!= T){mapa[mapa$NumerZn==i,"CDATIV3"] <- CD_ATIVI3}
+#  if(is.na(CD_ATIVI4)!= T){mapa[mapa$NumerZn==i,"CDATIV4"] <- CD_ATIVI4}
+#  if(is.na(CD_ATIVI5)!= T){mapa[mapa$NumerZn==i,"CDATIV5"] <- CD_ATIVI5}
+#  if(is.na(CD_ATIVI6)!= T){mapa[mapa$NumerZn==i,"CDATIV6"] <- CD_ATIVI6}
+#  if(is.na(CD_ATIVI7)!= T){mapa[mapa$NumerZn==i,"CDATIV7"] <- CD_ATIVI7}
+#  if(is.na(CD_ATIVI8)!= T){mapa[mapa$NumerZn==i,"CDATIV8"] <- CD_ATIVI8}
+#  rm(list = c("GRAU_INS2",
+#       "GRAU_INS3",
+#       "GRAU_INS4",
+#       "GRAU_INS5",
+#       "CD_ATIVI2",
+#       "CD_ATIVI3",
+#       "CD_ATIVI4",
+#       "CD_ATIVI5",
+#       "CD_ATIVI6",
+#       "CD_ATIVI7",
+#       "CD_ATIVI8",
+#       "rendaM", 
+#       "ptBR"))
+#  }
+#
+#writeOGR(mapa, dsn = 'ZonasODDados.shp',
+#         layer = 'ZonasODDados',
+#         encoding = "UTF-8",
+#         driver = "ESRI Shapefile",
+#         overwrite_layer = T,
+#         delete_dsn = T)
+#
+#
+##modeling variables ----
+#
+#mapa <- readOGR('ZonasODDados.shp', encoding = "UTF-8")
+#
+#mapa %>%
+#  lm(formula = dfDstPb ~ 
+#       RENDAMED +
+##       PTBRMED + 
+#       DURACAOOD +
+##       GRINS2 +
+#       GRINS3 +
+#       GRINS4 +
+##       GRINS5 +
+#       CDATIV2 +
+#       CDATIV3 +
+#       CDATIV4 +
+#       CDATIV5 +
+#       CDATIV6 +
+#       CDATIV7 +
+#       CDATIV8) -> modelo
+#
+#summary(modelo)
+#
+#vif(modelo)

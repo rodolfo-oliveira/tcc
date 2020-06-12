@@ -1,37 +1,31 @@
 
 Call:
-lm(formula = diffrnc ~ PONTO_BR + RENDA_FA + GRAU_INS4 + GRAU_INS5 + 
-    CD_ATIVI2 + CD_ATIVI4 + CD_ATIVI5 + CD_ATIVI6 + CD_ATIVI7 + 
-    CD_ATIVI8 + DURACAOOD + tipopublico, data = mapa@data[, colnames(mapa@data) %in% 
-    c("ZONA", "MOTIVO_D1", "tipoprivado", "GRAU_INS1", "CD_ATIVI1", 
-        "smltdTm") == F])
+lm(formula = myForm, data = mapa@data)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--6066.0  -378.1   -21.6   319.0  8348.7 
+-6060.9  -378.6   -21.7   319.6  8353.8 
 
 Coefficients:
               Estimate Std. Error  t value Pr(>|t|)    
-(Intercept)  1.892e+02  1.873e+01   10.104  < 2e-16 ***
-PONTO_BR     1.431e+00  5.731e-01    2.498 0.012505 *  
-RENDA_FA    -3.113e-03  9.273e-04   -3.357 0.000789 ***
-GRAU_INS4    5.873e+01  1.103e+01    5.325 1.01e-07 ***
-GRAU_INS5   -3.236e+01  1.256e+01   -2.576 0.009996 ** 
-CD_ATIVI2   -4.442e+01  1.927e+01   -2.305 0.021163 *  
-CD_ATIVI4   -9.858e+01  1.220e+01   -8.083 6.44e-16 ***
-CD_ATIVI5   -3.641e+01  1.766e+01   -2.062 0.039171 *  
-CD_ATIVI6   -6.719e+01  2.848e+01   -2.359 0.018308 *  
-CD_ATIVI7   -7.384e+01  2.022e+01   -3.652 0.000260 ***
-CD_ATIVI8   -8.574e+01  1.418e+01   -6.048 1.47e-09 ***
-DURACAOOD   -4.781e-01  2.298e-03 -208.093  < 2e-16 ***
-tipopublico  1.130e+03  9.835e+00  114.893  < 2e-16 ***
+(Intercept)  2.059e+02  1.877e+01   10.971  < 2e-16 ***
+PONTO_BR     1.476e+00  5.713e-01    2.583 0.009800 ** 
+RENDA_FA    -2.986e-03  9.258e-04   -3.225 0.001261 ** 
+GRAU_INS4    6.645e+01  1.057e+01    6.289 3.21e-10 ***
+GRAU_INS5   -2.655e+01  1.189e+01   -2.233 0.025532 *  
+CD_ATIVI4   -5.065e+01  1.318e+01   -3.843 0.000122 ***
+CD_ATIVI8   -3.402e+01  1.557e+01   -2.185 0.028908 *  
+MOTIVO2     -6.887e+01  1.252e+01   -5.500 3.81e-08 ***
+MOTIVO3     -6.801e+01  9.505e+00   -7.155 8.50e-13 ***
+DURACAOOD   -4.806e-01  2.336e-03 -205.730  < 2e-16 ***
+tipopublico  1.131e+03  9.825e+00  115.105  < 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 813 on 48241 degrees of freedom
+Residual standard error: 812.7 on 48243 degrees of freedom
   (1174 observations deleted due to missingness)
-Multiple R-squared:  0.4809,	Adjusted R-squared:  0.4808 
-F-statistic:  3725 on 12 and 48241 DF,  p-value: < 2.2e-16
+Multiple R-squared:  0.4813,	Adjusted R-squared:  0.4812 
+F-statistic:  4477 on 10 and 48243 DF,  p-value: < 2.2e-16
 
-   PONTO_BR    RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI2   CD_ATIVI4   CD_ATIVI5   CD_ATIVI6   CD_ATIVI7   CD_ATIVI8   DURACAOOD tipopublico 
-   3.343257    2.555799    1.972287    2.812395    1.055025    1.085188    1.039812    1.147167    1.043433    1.422191    1.654601    1.759361 
+   PONTO_BR    RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI4   CD_ATIVI8     MOTIVO2     MOTIVO3   DURACAOOD tipopublico 
+   3.325080    2.549929    1.811358    2.519974    1.268627    1.717501    1.791627    1.473478    1.712039    1.757353 
