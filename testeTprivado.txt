@@ -2,7 +2,7 @@
 	Paired t-test
 
 data:  mapa@data$smltdTm[mapa@data$tipo == i] and 60 * (mapa@data$DURACAO[mapa@data$tipo == i] + mapa@data$ANDA_D[mapa@data$tipo == mapa@data$smltdTm[mapa@data$tipo == i] and     i] + mapa@data$ANDA_O[mapa@data$tipo == i])
-t = -140.03, df = 35699, p-value < 2.2e-16
+t = -140.03, df = 35699, p-value < 0.00000000000000022
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -592.1072 -575.7599
@@ -14,6 +14,6 @@ mean of the differences
 	Wilcoxon signed rank test with continuity correction
 
 data:  mapa@data$smltdTm[mapa@data$tipo == i] and 60 * (mapa@data$DURACAO[mapa@data$tipo == i] + mapa@data$ANDA_D[mapa@data$tipo == mapa@data$smltdTm[mapa@data$tipo == i] and     i] + mapa@data$ANDA_O[mapa@data$tipo == i])
-V = 50149881, p-value < 2.2e-16
+V = 50149881, p-value < 0.00000000000000022
 alternative hypothesis: true location shift is not equal to 0
 

@@ -2,6 +2,12 @@ library(rgdal)
 library(dplyr)
 library(car)
 library(dummies)
+options(scipen = 999)
+#library(spgwr)
+library(GWmodel)
+library(spdep)
+
+
 
 #testes T
 
@@ -21,55 +27,54 @@ for(j in c('TimeRes', '')){
                 y = 60*(mapa@data$DURACAO[mapa@data$tipo==i] + mapa@data$ANDA_D[mapa@data$tipo==i] + mapa@data$ANDA_O[mapa@data$tipo==i]),
                 paired = T, conf.level = 0.95))
     sink()
-
-  
+    
     
   }
 }
 
 
 
-#asociando as variavie soas bancos de pontos
-names <- c('masterDatabaseOrigem.shp', 
-           'masterDatabaseOrigemTimeRes.shp',
-           'masterDatabaseDestino.shp',
-           'masterDatabaseDestinoTimeRes.shp')
-
-for(i in names){
-
-  
-  mapa <- readOGR(i, encoding = 'UTF-8')
-  
-  mapaAux <- foreign::read.dbf('OD 2017/Banco de dados/OD_2017.dbf')
-  mapaAux <- rbind(mapaAux[mapaAux$MODOPRIN %in% 9:12,], mapaAux[mapaAux$MODOPRIN %in% 1:6,])
-  
-  mapaAux %>%
-    select(ZONA,PONTO_BR, RENDA_FA, GRAU_INS, CD_ATIVI,MOTIVO_D, MOTIVO_O) -> mapaAux
-  
-  #outros
-  mapaAux$MOTIVO <- 3
-  
-  
-  #trabalho 
-  mapaAux$MOTIVO[(mapaAux$MOTIVO_D %in% c(1,2,3) & mapaAux$MOTIVO_O %in% c(8)) |
-                     (mapaAux$MOTIVO_O %in% c(1,2,3) & mapaAux$MOTIVO_D %in% c(8))] <- 1
-  # escola
-  mapaAux$MOTIVO[(mapaAux$MOTIVO_D %in% c(4) & mapaAux$MOTIVO_O %in% c(8)) |
-                   (mapaAux$MOTIVO_O %in% c(4) & mapaAux$MOTIVO_D %in% c(8))] <- 2
-
-
-  
-  mapa@data <- bind_cols(mapa@data, mapaAux)
-  
-  writeOGR(mapa,
-           dsn = i,
-           layer = i,
-           driver = 'ESRI Shapefile',
-           delete_dsn = T,
-           overwrite_layer = T,
-           encoding = 'UTF-8')
-}
-
+#associando as variaveis aos bancos de pontos
+#names <- c('masterDatabaseOrigem.shp', 
+#           'masterDatabaseOrigemTimeRes.shp',
+#           'masterDatabaseDestino.shp',
+#           'masterDatabaseDestinoTimeRes.shp')
+#
+#for(i in names){
+#
+#  
+#  mapa <- readOGR(i, encoding = 'UTF-8')
+#  
+#  mapaAux <- foreign::read.dbf('OD 2017/Banco de dados/OD_2017.dbf')
+#  mapaAux <- rbind(mapaAux[mapaAux$MODOPRIN %in% 9:12,], mapaAux[mapaAux$MODOPRIN %in% 1:6,])
+#  
+#  mapaAux %>%
+#    select(ZONA,PONTO_BR, RENDA_FA, GRAU_INS, CD_ATIVI,MOTIVO_D, MOTIVO_O) -> mapaAux
+#  
+#  #outros
+#  mapaAux$MOTIVO <- 3
+#  
+#  
+#  #trabalho 
+#  mapaAux$MOTIVO[(mapaAux$MOTIVO_D %in% c(1,2,3) & mapaAux$MOTIVO_O %in% c(8)) |
+#                     (mapaAux$MOTIVO_O %in% c(1,2,3) & mapaAux$MOTIVO_D %in% c(8))] <- 1
+#  # escola
+#  mapaAux$MOTIVO[(mapaAux$MOTIVO_D %in% c(4) & mapaAux$MOTIVO_O %in% c(8)) |
+#                   (mapaAux$MOTIVO_O %in% c(4) & mapaAux$MOTIVO_D %in% c(8))] <- 2
+#
+#
+#  
+#  mapa@data <- bind_cols(mapa@data, mapaAux)
+#  
+#  writeOGR(mapa,
+#           dsn = i,
+#           layer = i,
+#           driver = 'ESRI Shapefile',
+#           delete_dsn = T,
+#           overwrite_layer = T,
+#           encoding = 'UTF-8')
+#}
+#
 
 names <- c('masterDatabaseOrigem.shp', 'masterDatabaseOrigemTimeRes.shp')
 
@@ -83,12 +88,19 @@ for(i in names){
   
   mapa$DURACAOOD <- 60*(mapa$DURACAO + mapa$ANDA_D + mapa$ANDA_O)
   mapa@data <- mapa@data[,c("diffrnc","ZONA","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO","DURACAOOD","tipo",'smltdTm')]
+  mapa@data %>%
+    group_by(ZONA) %>%
+    summarise(mean = mean(PONTO_BR,na.rm=T)) -> PBRmeans
+  
+  for(j in 1:length(PBRmeans$ZONA)){
+    mapa@data[is.na(mapa@data$PONTO_BR) & mapa@data$ZONA == PBRmeans$ZONA[j],'PONTO_BR'] <- PBRmeans$mean[j]
+  }
   
   mapa <- mapa[sample(1:nrow(mapa)), ]
   
   
   #scatter panel
-  my_cols <- c("red", "green")  
+  my_cols <- c("forestgreen", "darkgoldenrod2")  
 
   plot_colors <- my_cols
   text <- c("Privado","Público")
@@ -181,6 +193,133 @@ for(i in names){
   print(vif(modelo))
   sink()
 
+  
+  
+  #spatial GWR diagnostics
+  
+  mapa <- readOGR(dsn = 'OD 2017/Mapas/Shape/Distritos_2017_region.shp', encoding = 'UTF-8')
+  
+  if(i =='masterDatabaseOrigem.shp'){nomes <- c('Origem - ', "Destino - ")}
+  else{nomes <- c('Destino com Restrição Temporal - ',
+                  'Origem Restrição Temporal - ')}
+  
+  variableNames <- c("Intercept",
+                     "RENDA_FA",
+                     "PONTO_BR",
+                     "GRAU_INS2",
+                     "GRAU_INS3",
+                     "GRAU_INS4",
+                     "GRAU_INS5",
+                     "CD_ATIVI2",
+                     "CD_ATIVI3",
+                     "CD_ATIVI4",
+                     "CD_ATIVI5",
+                     "CD_ATIVI6",
+                     "CD_ATIVI7",
+                     "CD_ATIVI8",
+                     "MOTIVO2",
+                     "MOTIVO3",
+                     "DURACAOOD",
+                     "tipopublico")
+  
+  xtenseVariableNames <-  c("Intercepto",
+                            "Renda Familiar",
+                            "Pontuação Crit. Brasil",
+                            "Ensino Fundamental II Incompleto",
+                            "Ensino Médio Incompleto",
+                            "Ensino Superior Incompleto",
+                            "Ensino Superior Completo",
+                            "CA: Faz Bico",
+                            "CA: Em Licença Médica",
+                            "CA: Aposentado/Pensionista",
+                            "CA: Sem Trabalho",
+                            "CA: Nunca Trabalhou",
+                            "CA: Dona de Casa",
+                            "CA: Estudante",
+                            "Motivo Escola",
+                            "Outros Motivos",
+                            "Duração ViagemOD",
+                            "Transporte Público")
+  
+  for(p in nomes){
+    if(stringr::str_detect(p, "Origem") & stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseOrigemTimeRes.shp",layer='masterDatabaseOrigemTimeRes')}
+    if(!stringr::str_detect(p, "Origem") & stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseDestinoTimeRes.shp",layer='masterDatabaseDestinoTimeRes')}
+    if(stringr::str_detect(p, "Origem") & !stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseOrigem.shp",layer='masterDatabaseOrigem')}
+    if(!stringr::str_detect(p, "Origem") & !stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseDestino.shp",layer='masterDatabaseDestino')}
+    
+    
+    pontosMA <- pontosMA[is.na(pontosMA$diffrnc)==F,]
+    
+    grd <- SpatialGrid(GridTopology(c(313767,7357074),c(1000,1000),c(50,56)))
+    
+    pontosMA@data %>%
+      group_by(ZONA) %>%
+      summarise(mean = mean(PONTO_BR,na.rm=T)) -> PBRmeans
+    
+    for(l in 1:length(PBRmeans$ZONA)){
+      pontosMA@data[is.na(pontosMA@data$PONTO_BR) & pontosMA@data$ZONA == PBRmeans$ZONA[l],'PONTO_BR'] <- PBRmeans$mean[l]
+    }
+    
+    pontos <- pontosMA#[pontosMA$TIPO=='publico',]
+    #pontos <- pontos[sample(length(pontos),replace = F,size = length(pontos)*0.3),]
+    
+    
+    ############################################################################
+    ## GWR - Geographically Weighted Regression ################################
+    ############################################################################
+    
+    pontos$DURACAOOD <- 60*(pontos$DURACAO + pontos$ANDA_O + pontos$ANDA_D)
+    
+    pontos@data <- pontos@data[,c("diffrnc","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO","DURACAOOD", "tipo")]
+    pontos$CD_ATIVI <- as.factor(pontos$CD_ATIVI)
+    pontos$GRAU_INS <- as.factor(pontos$GRAU_INS)
+    pontos$MOTIVO <- as.factor(pontos$MOTIVO)
+    pontos$tipo <- as.factor(pontos$tipo)
+    pontos@data <- dummies::dummy.data.frame(pontos@data)
+    
+    amostra <- pontos[sample(length(pontos),replace = F,size = length(pontos)*0.2),]
+    a <- gw.dist(dp.locat = coordinates(amostra))
+    
+    formula <- as.formula(paste("diffrnc ~ ", paste(names(modelo[[1]])[-1], collapse=" + "), sep=""))
+    # Calcula largura de banda (em # de registros) para diversos tipos de kernel
+    bw.ap  <- bw.gwr(dMat = a, formula,
+                     data=amostra, approach="AICc", 
+                     kernel="gaussian", adaptive=TRUE)
+    
+    rm(a)
+    DW <- gw.dist(dp.locat = coordinates(pontos), rp.locat = coordinates(grd),focus = 0)
+    
+    gwr.ap <- gwr.basic(formula,
+                        regression.points = grd, 
+                        data=pontos, 
+                        bw=bw.ap, 
+                        kernel="gaussian",
+                        adaptive=TRUE,
+                        dMat = DW,
+                        F123.test = T)
+    
+    rm(DW)
+    plotnames <- colnames(gwr.ap$SDF@data)
+    mypalette <- RColorBrewer::brewer.pal(11,'RdBu')
+    
+    
+    map.layout <- list(as(mapa[mapa$NumeroDist %in% 1:96,], "SpatialLines"), width = 1, col = 'gray35')
+    
+    for (j in 1:length(plotnames)){
+      jpeg(filename = paste0('71', 
+                             which(p==nomes),
+                             "_GWR_",
+                             stringr::str_remove_all(p," |-"),
+                             "_",
+                             stringr::str_remove_all(xtenseVariableNames[which(variableNames == plotnames[j])]," |:|-|\\/"),'.jpeg'),width = 650, height = 800, quality = 100)
+      
+      print(spplot(gwr.ap$SDF, plotnames[j], key.space = "right", par.settings=list(fontsize=list(text=20)),
+             col.regions = mypalette, cuts = 10, sp.layout = map.layout,
+             main = paste0(strwrap(paste(p,  xtenseVariableNames[which(variableNames == plotnames[j])], sep = " "), width = 25), collapse = '\n')))
+      dev.off()
+    }
+  }
+  
 
 }
 

@@ -3,7 +3,7 @@
 
 
 plot_LISA <- function(
-  OGRdsn,
+  mapa,
   column,
   legenda = F,
   agregLab,
@@ -17,7 +17,7 @@ plot_LISA <- function(
   require(sp)
   require(ggplot2)
   #reference: http://rstudio-pubs-static.s3.amazonaws.com/4938_b5fc230d586c48b291627ff6ea484d2e.html
-  mapaMor <- readOGR(dsn = OGRdsn, encoding = 'UTF-8')
+  mapaMor <- mapa
   
   mapa <- mapaMor[is.na(mapaMor@data[,column])==F,]
   
@@ -66,8 +66,8 @@ plot_LISA <- function(
     # Assign colors to each map class
     colors <- c("red", "blue", "lightpink", "skyblue2", "white", "darkgrey")
     par(mar=c(0,0,2,0))
-    plot(mapa, col = colors[np])  #colors[np] manually sets the color for each county
-    title(agregLab, cex.main = 2, line = -2)
+    plot(mapa, col = colors[np], border = 'gray40')  #colors[np] manually sets the color for each county
+    title(agregLab, cex.main = 1.6, line = -2)
     #corredor de onibus
     if(linhasTransp == T){
       
@@ -130,8 +130,8 @@ plot_LISA <- function(
     colors[colors == 2] <- 'blue'
     colors[colors == 3] <- 'skyblue2'
     colors[colors == 4] <- 'lightpink'
-    plot(mapa, col = colors)  #colors[np] manually sets the color for each county
-    title(agregLab)
+    plot(mapa, col = colors, border = 'gray40')  #colors[np] manually sets the color for each county
+    title(agregLab, cex.main = 1.6)
     colors <- c("red", "blue",  "lightpink" ,"skyblue2", "white" )
     if (legenda == T){
       par(mar=c(0,0,0,0))

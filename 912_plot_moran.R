@@ -7,7 +7,7 @@ library(sp)
 library(ggplot2)
 
 plot_moran <- function(
-  OGRdsn,
+  mapa,
   xlab,
   ylab,
   pch = 10,
@@ -16,7 +16,7 @@ plot_moran <- function(
   col,
   abs = F)
 {
-  mapa <- readOGR(dsn = OGRdsn)
+
   mapa <- mapa[is.na(mapa@data[,column])==F,]
   
   var <- mapa@data[,column]
