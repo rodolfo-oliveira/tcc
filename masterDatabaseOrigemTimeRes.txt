@@ -20,13 +20,11 @@ MOTIVO3      -65.9121413    9.3959068   -7.015     0.00000000000233 ***
 DURACAOOD     -0.4817249    0.0023026 -209.211 < 0.0000000000000002 ***
 tipopublico 1130.9507663    9.6802098  116.831 < 0.0000000000000002 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 811.7 on 49417 degrees of freedom
 Multiple R-squared:  0.4838,	Adjusted R-squared:  0.4837 
 F-statistic:  4632 on 10 and 49417 DF,  p-value: < 0.00000000000000022
 
-   PONTO_BR    RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI4   CD_ATIVI8 
-   3.306037    2.543859    1.819250    2.524136    1.269572    1.720631 
-    MOTIVO2     MOTIVO3   DURACAOOD tipopublico 
-   1.792539    1.474733    1.709954    1.751275 
+   PONTO_BR    RENDA_FA   GRAU_INS4   GRAU_INS5   CD_ATIVI4   CD_ATIVI8     MOTIVO2     MOTIVO3   DURACAOOD tipopublico 
+   3.306037    2.543859    1.819250    2.524136    1.269572    1.720631    1.792539    1.474733    1.709954    1.751275 

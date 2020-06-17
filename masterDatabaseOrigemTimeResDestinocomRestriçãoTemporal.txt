@@ -1,0 +1,74 @@
+   ***********************************************************************
+   *                       Package   GWmodel                             *
+   ***********************************************************************
+   Program starts at: 2020-06-17 22:14:31 
+   Call:
+   gwr.basic(formula = formula, data = pontos, regression.points = grd, 
+    bw = 130, kernel = "gaussian", adaptive = TRUE, dMat = DW, 
+    F123.test = T, cv = T)
+
+   Dependent (y) variable:  diffrnc
+   Independent variables:  PONTO_BR RENDA_FA GRAU_INS4 GRAU_INS5 CD_ATIVI4 CD_ATIVI8 MOTIVO2 MOTIVO3 DURACAOOD tipopublico
+   Number of data points: 49428
+   ***********************************************************************
+   *                    Results of Global Regression                     *
+   ***********************************************************************
+
+   Call:
+    lm(formula = formula, data = data)
+
+   Residuals:
+    Min      1Q  Median      3Q     Max 
+-6051.5  -378.7   -21.5   319.4  8357.7 
+
+   Coefficients:
+                   Estimate   Std. Error  t value             Pr(>|t|)    
+   (Intercept)  212.1055668   18.5989675   11.404 < 0.0000000000000002 ***
+   PONTO_BR       1.2571304    0.5666329    2.219              0.02652 *  
+   RENDA_FA      -0.0027337    0.0009207   -2.969              0.00299 ** 
+   GRAU_INS4     67.3840265   10.4461017    6.451     0.00000000011241 ***
+   GRAU_INS5    -24.6231880   11.7368710   -2.098              0.03592 *  
+   CD_ATIVI4    -54.5428961   13.0241204   -4.188     0.00002821129357 ***
+   CD_ATIVI8    -31.1635492   15.3699254   -2.028              0.04261 *  
+   MOTIVO2      -66.4130839   12.3458761   -5.379     0.00000007508420 ***
+   MOTIVO3      -65.9121413    9.3959068   -7.015     0.00000000000233 ***
+   DURACAOOD     -0.4817249    0.0023026 -209.211 < 0.0000000000000002 ***
+   tipopublico 1130.9507663    9.6802098  116.831 < 0.0000000000000002 ***
+
+   ---Significance stars
+   Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+   Residual standard error: 811.7 on 49417 degrees of freedom
+   Multiple R-squared: 0.4838
+   Adjusted R-squared: 0.4837 
+   F-statistic:  4632 on 10 and 49417 DF,  p-value: < 0.00000000000000022 
+   ***Extra Diagnostic information
+   Residual sum of squares: 32560609998
+   Sigma(hat): 811.6495
+   AIC:  802535.7
+   AICc:  802535.7
+   ***********************************************************************
+   *          Results of Geographically Weighted Regression              *
+   ***********************************************************************
+
+   *********************Model calibration information*********************
+   Kernel function: gaussian 
+   Adaptive bandwidth: 130 (number of nearest neighbours)
+   Regression points: A seperate set of regression points is used.
+   Distance metric: A distance matrix is specified for this model calibration.
+
+   ****************Summary of GWR coefficient estimates:******************
+                       Min.      1st Qu.       Median      3rd Qu.      Max.
+   Intercept   -804.6160421  -48.2645600   84.1081075  184.7098358 1300.6278
+   PONTO_BR     -27.8746922    0.9847398    2.4408185    5.7026424   31.6690
+   RENDA_FA      -0.0640792   -0.0035135   -0.0023672    0.0052004    0.1595
+   GRAU_INS4   -360.0631492   70.1409472   92.7629309  134.5222616  544.8071
+   GRAU_INS5   -539.9637081  -16.4964445   43.0525825  126.5588061  687.6301
+   CD_ATIVI4   -576.9089004 -101.3835040  -64.8451095  -27.3490376  756.1707
+   CD_ATIVI8   -759.0652984  -92.3078545  -38.5464834   -5.1121039  422.2110
+   MOTIVO2     -901.1575827 -134.1637410  -63.7367439  -52.1488690  292.0273
+   MOTIVO3     -461.3615300  -94.7471805  -64.5778420  -52.6739597  287.1460
+   DURACAOOD     -0.6607430   -0.5069990   -0.4708978   -0.4438344   -0.3491
+   tipopublico  565.6979483 1123.5642892 1227.9551995 1366.9487608 1990.3409
+
+   ***********************************************************************
+   Program stops at: 2020-06-17 22:15:07 

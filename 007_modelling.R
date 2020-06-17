@@ -6,6 +6,7 @@ options(scipen = 999)
 #library(spgwr)
 library(GWmodel)
 library(spdep)
+#library(gwrr)
 
 
 
@@ -199,8 +200,9 @@ for(i in names){
   
   mapa <- readOGR(dsn = 'OD 2017/Mapas/Shape/Distritos_2017_region.shp', encoding = 'UTF-8')
   
-  if(i =='masterDatabaseOrigem.shp'){nomes <- c('Origem - ', "Destino - ")}
-  else{nomes <- c('Destino com Restrição Temporal - ',
+  if(i =='masterDatabaseOrigem.shp'){
+    nomes <- c('Origem - ', "Destino - ")
+    }else{nomes <- c('Destino com Restrição Temporal - ',
                   'Origem Restrição Temporal - ')}
   
   variableNames <- c("Intercept",
@@ -277,28 +279,51 @@ for(i in names){
     pontos$tipo <- as.factor(pontos$tipo)
     pontos@data <- dummies::dummy.data.frame(pontos@data)
     
-    amostra <- pontos[sample(length(pontos),replace = F,size = length(pontos)*0.2),]
-    a <- gw.dist(dp.locat = coordinates(amostra))
+    
+  
+    
+    
+    
+    #pontos <- pontos[sample(length(pontos),replace = F,size = length(pontos)*0.2),]
+    
+    #a <- matrix(nrow = length(amostra), ncol = length(amostra))
+    #for(r in 1:length(a[1,])){
+    #  aux <- gw.dist(dp.locat = coordinates(amostra), focus = r)
+    #  a[,r] <- aux[,1]
+    #  print(r)
+    #}
+    
+    
     
     formula <- as.formula(paste("diffrnc ~ ", paste(names(modelo[[1]])[-1], collapse=" + "), sep=""))
     # Calcula largura de banda (em # de registros) para diversos tipos de kernel
-    bw.ap  <- bw.gwr(dMat = a, formula,
-                     data=amostra, approach="AICc", 
-                     kernel="gaussian", adaptive=TRUE)
     
-    rm(a)
+   
+
+    #bw.ap  <- bw.gwr(dMat = a, formula,
+    #                 data=amostra, approach="AICc", 
+    #                 kernel="gaussian", adaptive=TRUE)
+    #rm(a)
+
     DW <- gw.dist(dp.locat = coordinates(pontos), rp.locat = coordinates(grd),focus = 0)
-    DW2 <- gw.dist(dp.locat = coordinates(pontos), focus = 300)
-    gwr.ap <- gwr.generalised(formula,
+
+    
+    gwr.ap <- gwr.basic(formula = formula,
                         regression.points = grd, 
                         data = pontos, 
-                        bw=bw.ap, 
-                        kernel="boxcar",
+                        bw=130, 
+                        kernel="gaussian",
                         adaptive=TRUE,
                         dMat = DW,
-                        dMat1 = DW2
-                       # F123.test = T
+                        cv = T,F123.test = T
                         )
+    
+    
+    save(gwr.ap,file = stringr::str_remove_all(paste0(i, p), 'shp|\\.| |-'))
+    
+    sink(paste0(stringr::str_remove_all(paste0(i, p), 'shp|\\.| |-'),'.txt'))
+    print(gwr.ap)
+    sink()
     
     rm(DW)
     
