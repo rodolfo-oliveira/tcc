@@ -288,17 +288,21 @@ for(i in names){
     
     rm(a)
     DW <- gw.dist(dp.locat = coordinates(pontos), rp.locat = coordinates(grd),focus = 0)
-    
-    gwr.ap <- gwr.basic(formula,
+    DW2 <- gw.dist(dp.locat = coordinates(pontos), focus = 300)
+    gwr.ap <- gwr.generalised(formula,
                         regression.points = grd, 
-                        data=pontos, 
+                        data = pontos, 
                         bw=bw.ap, 
-                        kernel="gaussian",
+                        kernel="boxcar",
                         adaptive=TRUE,
                         dMat = DW,
-                        F123.test = T)
+                        dMat1 = DW2
+                       # F123.test = T
+                        )
     
     rm(DW)
+    
+    
     plotnames <- colnames(gwr.ap$SDF@data)
     mypalette <- RColorBrewer::brewer.pal(11,'RdBu')
     
