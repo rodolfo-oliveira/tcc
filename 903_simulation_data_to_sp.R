@@ -9,7 +9,7 @@ simulation_data_to_sp <- function(origem = T){
   
   dados = dados[dados$ID>400,]
   
-  #separacao dos pares latitudelongitude
+  #separacao dos pares latitude longitude
   dados %>%
     separate(col=OrCoords,into = c("OrLat", "OrLong"), sep = ",", remove=TRUE,fill = "right", convert = TRUE) %>%
     separate(col=DestCoords,into = c("DestLat", "DestLong"), sep = ",", remove=TRUE,fill = "right", convert = TRUE) ->dados

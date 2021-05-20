@@ -10,12 +10,17 @@ library(spdep)
 
 
 
-#testes T
+#testes T----
+#calculo dos testes T de diferença de médias para verificar a existencia de diferença de tempos de viagem simulados e da Pesquisa OD para transporte público e privado
 
+#loop para realizar a analise a partir dos bancos com e sem  consideração da restrição de tempo
 for(j in c('TimeRes', '')){
   print (j)
+  #leitura do banco de dados
   mapa <- readOGR(paste0('masterDatabaseOrigem',j,'.shp'))
+  #impressão do nome do banco para confirmaçao
   print(paste0('masterDatabaseOrigem',j,'.shp'))
+  #loop para operar os dados de trasnporte público e privado
   for(i in c('publico', 'privado')){
     
     
@@ -35,7 +40,7 @@ for(j in c('TimeRes', '')){
 
 
 
-#associando as variaveis aos bancos de pontos
+#associando as variaveis aos bancos de pontos----
 #names <- c('masterDatabaseOrigem.shp', 
 #           'masterDatabaseOrigemTimeRes.shp',
 #           'masterDatabaseDestino.shp',
@@ -77,22 +82,31 @@ for(j in c('TimeRes', '')){
 #}
 #
 
+## analises de correlaçao ----
+#nomes dos bancos 
 names <- c('masterDatabaseOrigem.shp', 'masterDatabaseOrigemTimeRes.shp')
 
 
 for(i in names){
 
+  #leitura do banco
   mapa <- readOGR(i, encoding = 'UTF-8')
 
-  
+  #retirada de valores nulos
   mapa <- mapa[is.na(mapa@data$diffrnc) != T,]
   
+  #calculo da duraçao de viagem da pesquisa OD considerando tempo andando e conversão em segundos
   mapa$DURACAOOD <- 60*(mapa$DURACAO + mapa$ANDA_D + mapa$ANDA_O)
+  
+  #fitragem dos dados a serem usados na analise
   mapa@data <- mapa@data[,c("diffrnc","ZONA","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO","DURACAOOD","tipo",'smltdTm')]
+  
+  #calculo da média da pontuação brasil para as zonas OD
   mapa@data %>%
     group_by(ZONA) %>%
     summarise(mean = mean(PONTO_BR,na.rm=T)) -> PBRmeans
   
+  #Associação da média da pontuação brasil para as observações da zona com valores nulos
   for(j in 1:length(PBRmeans$ZONA)){
     mapa@data[is.na(mapa@data$PONTO_BR) & mapa@data$ZONA == PBRmeans$ZONA[j],'PONTO_BR'] <- PBRmeans$mean[j]
   }
@@ -135,22 +149,27 @@ for(i in names){
 
 
   
-  #modeling of data
+  #modeling of data----
+  
+  #transformando variáveis qualitativas em factors
   mapa$GRAU_INS <- as.factor(mapa$GRAU_INS)
   mapa$CD_ATIVI <- as.factor(mapa$CD_ATIVI)
   mapa$MOTIVO <- as.factor(mapa$MOTIVO)
   mapa$tipo <- as.factor(mapa$tipo)
  # mapa$PONTO_BR[is.na(mapa$PONTO_BR)]  <- mean(mapa$PONTO_BR, na.rm = T)
+
+  #filtro de colunas com dados para analise
   mapa@data <- mapa@data[,colnames(mapa@data) %in% c("MOTIVO_D","MOTIVO_O")==F]
   
-  
+  #transformação das variaveis factor em variaveis dummy
   mapa@data <- dummy.data.frame(data = mapa@data)
   
   
   
   
-  
+  #modelagem simples
   modelo <- lm(data = mapa@data[,colnames(mapa@data) %in% c("ZONA","MOTIVO1","tipoprivado","GRAU_INS1","CD_ATIVI1", "smltdTm")==F], formula = diffrnc ~. )
+  #stepwise do modelo
   modelo <- step(modelo,trace = T)
   
   
@@ -164,6 +183,7 @@ for(i in names){
   #  all_vifs <- car::vif(selectedMod)
   #}
   
+  #retirada de valores não significantes
   all_vars <- names(modelo[[1]])[-1]  # names of all X variables
   # Get the non-significant vars
   summ <- summary(modelo)  # model summary
@@ -188,7 +208,7 @@ for(i in names){
   }
   summary(modelo)
   
-  
+  #impressão do modelo final
   sink(paste0(stringr::str_remove(i, '.shp'),'.txt'))
   print(summary(modelo))
   print(vif(modelo))
@@ -196,15 +216,19 @@ for(i in names){
 
   
   
-  #spatial GWR diagnostics
+  #spatial GWR diagnostics----
+  #diagnósticos espaciais
   
+  #leitura do mapa de distritos de Sâo Paulo
   mapa <- readOGR(dsn = 'OD 2017/Mapas/Shape/Distritos_2017_region.shp', encoding = 'UTF-8')
   
+  #condicional para ajuste do nome da base de analise
   if(i =='masterDatabaseOrigem.shp'){
     nomes <- c('Origem - ', "Destino - ")
     }else{nomes <- c('Destino com Restrição Temporal - ',
                   'Origem Restrição Temporal - ')}
   
+  #nomes das variáveis de analise
   variableNames <- c("Intercept",
                      "RENDA_FA",
                      "PONTO_BR",
@@ -224,6 +248,7 @@ for(i in names){
                      "DURACAOOD",
                      "tipopublico")
   
+  #nome por extenso das variáveis de analise
   xtenseVariableNames <-  c("Intercepto",
                             "Renda Familiar",
                             "Pontuação Crit. Brasil",
@@ -243,21 +268,26 @@ for(i in names){
                             "Duração ViagemOD",
                             "Transporte Público")
   
+  #loop para analise dos bancos de dados
   for(p in nomes){
+    #condicionais para leitura do banco de dados
     if(stringr::str_detect(p, "Origem") & stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseOrigemTimeRes.shp",layer='masterDatabaseOrigemTimeRes')}
     if(!stringr::str_detect(p, "Origem") & stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseDestinoTimeRes.shp",layer='masterDatabaseDestinoTimeRes')}
     if(stringr::str_detect(p, "Origem") & !stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseOrigem.shp",layer='masterDatabaseOrigem')}
     if(!stringr::str_detect(p, "Origem") & !stringr::str_detect(p, "Restrição")){pontosMA <- rgdal::readOGR(dsn="masterDatabaseDestino.shp",layer='masterDatabaseDestino')}
     
-    
+    #separação dos dados para analise, retirando os as linhas onde a diferença calculada é nula
     pontosMA <- pontosMA[is.na(pontosMA$diffrnc)==F,]
     
+    #criação de uma grade para impressao dos dados
     grd <- SpatialGrid(GridTopology(c(313767,7357074),c(1000,1000),c(50,56)))
     
+    #cálculo das médias zonais da pontuação brasil
     pontosMA@data %>%
       group_by(ZONA) %>%
       summarise(mean = mean(PONTO_BR,na.rm=T)) -> PBRmeans
     
+    #associaçao das médias zonais da pontuação brasil às abservações dentro da zona com valor nulo
     for(l in 1:length(PBRmeans$ZONA)){
       pontosMA@data[is.na(pontosMA@data$PONTO_BR) & pontosMA@data$ZONA == PBRmeans$ZONA[l],'PONTO_BR'] <- PBRmeans$mean[l]
     }
@@ -267,21 +297,23 @@ for(i in names){
     
     
     ############################################################################
-    ## GWR - Geographically Weighted Regression ################################
+    ## GWR - Geographically Weighted Regression ################################----
     ############################################################################
     
     pontos$DURACAOOD <- 60*(pontos$DURACAO + pontos$ANDA_O + pontos$ANDA_D)
     
+    #filtro de colunas com dados para analise
     pontos@data <- pontos@data[,c("diffrnc","PONTO_BR","RENDA_FA","GRAU_INS","CD_ATIVI","MOTIVO","DURACAOOD", "tipo")]
+   
+    #transformando variáveis qualitativas em factors
     pontos$CD_ATIVI <- as.factor(pontos$CD_ATIVI)
     pontos$GRAU_INS <- as.factor(pontos$GRAU_INS)
     pontos$MOTIVO <- as.factor(pontos$MOTIVO)
     pontos$tipo <- as.factor(pontos$tipo)
+    #transformação das variaveis factor em variaveis dummy
     pontos@data <- dummies::dummy.data.frame(pontos@data)
     
-    
-  
-    
+
     
     
     #pontos <- pontos[sample(length(pontos),replace = F,size = length(pontos)*0.2),]
@@ -294,7 +326,7 @@ for(i in names){
     #}
     
     
-    
+    #formula sando a diferença de tempos de viagem e todas as variáveis do modelo
     formula <- as.formula(paste("diffrnc ~ ", paste(names(modelo[[1]])[-1], collapse=" + "), sep=""))
     # Calcula largura de banda (em # de registros) para diversos tipos de kernel
     
@@ -305,9 +337,10 @@ for(i in names){
     #                 kernel="gaussian", adaptive=TRUE)
     #rm(a)
 
+    #calculo da matriz de distancias para modelo de regressão espacial
     DW <- gw.dist(dp.locat = coordinates(pontos), rp.locat = coordinates(grd),focus = 0)
 
-    
+    #calculo do modelo de regressão espacial
     gwr.ap <- gwr.basic(formula = formula,
                         regression.points = grd, 
                         data = pontos, 
@@ -318,7 +351,7 @@ for(i in names){
                         cv = T,F123.test = T
                         )
     
-    
+    #salvando o modelo
     save(gwr.ap,file = stringr::str_remove_all(paste0(i, p), 'shp|\\.| |-'))
     
     sink(paste0(stringr::str_remove_all(paste0(i, p), 'shp|\\.| |-'),'.txt'))
@@ -328,12 +361,14 @@ for(i in names){
     rm(DW)
     
     
+    #imprimindo resultados do modelo
+    
+    #definindo nomes, cores e layouts
     plotnames <- colnames(gwr.ap$SDF@data)
     mypalette <- RColorBrewer::brewer.pal(11,'RdBu')
-    
-    
     map.layout <- list(as(mapa[mapa$NumeroDist %in% 1:96,], "SpatialLines"), width = 1, col = 'gray35')
     
+    #loop para impressão dos mapas
     for (j in 1:length(plotnames)){
       jpeg(filename = paste0('71', 
                              which(p==nomes),

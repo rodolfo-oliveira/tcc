@@ -1,4 +1,4 @@
-#funcao para converter as bases simuladas ppara sp
+#funcao para converter as bases simuladas para sp
 
 convert_spatial <- function(database, origem = T){
   require(sp)

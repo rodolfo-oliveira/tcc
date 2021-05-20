@@ -6,5 +6,5 @@ source('908_means_buffered_trips.R')
 #functions for measuring differences and ratios
 source('909_measures_for_buffered_trips.R')
 
-#master function to compare databases
+#master function to compare databases - differences and ratios between simulated and OD travels times
 source('910_MF_database_comparison.R')

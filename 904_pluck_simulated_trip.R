@@ -1,5 +1,13 @@
 #function that selects travels near a bufferzone from a point
-pluck_simulated_trip <- function(spatialPoint, spatialDatabase, bufferSize = 1000, time = F){
+#spatialPoint = ponto central do buffer
+#spatialDatabase = banco de pontos para serem slecionados dentro do buffer
+#buffersize = tamanho do buffer em torno do ponto em metros
+#time = se TRUE realiza o controle de viagens que ocorreram em um intervalo de duas horas para cima e para baixo
+
+pluck_simulated_trip <- function(spatialPoint, 
+                                 spatialDatabase, 
+                                 bufferSize = 1000, 
+                                 time = F){
   require(raster)
   require(dplyr)
   require(sp)

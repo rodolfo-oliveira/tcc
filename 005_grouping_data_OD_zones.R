@@ -2,26 +2,31 @@
 
 library(rgdal)
 
+#mapa das zonas da Pesquisa OD
 mapa <- readOGR('OD 2017/Mapas/Shape/Zonas_2017_region.shp',
                 encoding = "UTF-8",
                 p4s = "+proj=utm +zone=23 +south +ellps=GRS80 +units=m +no_defs")
 
+#filtrando zonas do município de São Paulo
 mapa <- mapa[mapa@data$NumeroMuni==36,]
 
+#nomes dos bancos de dados com resultados
 DBNames <- list.files(pattern = 'master.+shp')
 
 
-
+#loop para passar por todos bancos
 for(j in DBNames){
   analysisDatabaseName <- j
   
   
-  
+  #leitura do banco de dados
   analysisDatabase <- readOGR(analysisDatabaseName)
   
+  #Inicialização de flags
   destino <- F
   tRestraint <- F
   
+  #flags ativadas a partir do nome dos arquivos de banco de dados
   if(stringr::str_detect(analysisDatabaseName, 'Destino') ==T ){
     destino <- T
     if(stringr::str_detect(analysisDatabaseName, "TimeRes") == T){
@@ -46,11 +51,12 @@ for(j in DBNames){
     varName <- paste0(varName,'TRes')
   }
   
-  
+  #criaçao das variveis de dados no shapefile
   mapa@data[,paste0(varName, 'Pub')] <- numeric()
   
   mapa@data[,paste0(varName, 'Priv')] <- numeric()
   
+  #calculo das médias das medidas para as zonas da pesquisa OD
   for (i in 1:length(mapa)){
     
     sample <- over(x = analysisDatabase, y = mapa[i,])
@@ -62,6 +68,7 @@ for(j in DBNames){
   }
 }
 
+#resultados salvos em shapefile
 writeOGR(obj = mapa,
          dsn = 'ZonasODDados.shp',
          layer = 'ZonasODDados',

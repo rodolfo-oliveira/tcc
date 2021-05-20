@@ -1,4 +1,4 @@
-#funcao para converter as bases da OD para sf
+#funcao para converter as bases da OD para sp, identificando a origem ou o destino
 
 convert_spatial <- function(database, origem = T){
   require(sp)

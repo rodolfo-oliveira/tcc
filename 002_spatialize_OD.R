@@ -2,7 +2,7 @@ library(dplyr)
 library(sp)
 source("501_OD_processing_functions.R")
 
-#convertendo para sf
+#convertendo para sp - na origem da viagem e no destino da viagem
 #viagens de transporte motorizado (carro, proprio ou 'alugado')
 database_privado_origem <- convert_spatial(database_privado, origem = T)
 database_privado_destino <- convert_spatial(database_privado, origem = F)
@@ -11,7 +11,7 @@ rm(database_privado)
 database_privado_moto_origem <- convert_spatial(database_privado_moto, origem = T)
 database_privado_moto_destino <- convert_spatial(database_privado_moto, origem = F)
 rm(database_privado_moto)
-#viagens de transporte público - todos os modais (sem fretados privados e sem trasnporte escolar)
+#viagens de transporte público - todos os modais (sem fretados privados e sem transporte escolar)
 database_publico_origem <- convert_spatial(database_publico, origem = T)
 database_publico_destino <- convert_spatial(database_publico, origem = F)
 rm(database_publico)

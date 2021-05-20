@@ -1,12 +1,15 @@
-#script para mapas LISA
+#script para mapas das médias dos dados
 
-
+#mapa = shapefile do conjunto de dados
+#column = nome da variável de análise
+#agregLab = nome do mapa
+#col = cor do mapa
 
 plot_MAP <- function(
   mapa,
   column,
   agregLab, 
-  inte,
+#  inte,
   col)
 {
   require(rgdal)

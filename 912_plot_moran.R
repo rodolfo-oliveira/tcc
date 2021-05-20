@@ -6,6 +6,14 @@ library(dplyr)
 library(sp)
 library(ggplot2)
 
+#mapa = shapefile do conjunto de dados
+#xlab = nome do eixo x
+#ylab = nome do eixo y
+#pch = estilo de pontos no gráfico
+#column = nome da variável de análise
+#agregLab = nome do mapa
+#abs = se TRUE, considera os valores absolutos do dados para analise
+
 plot_moran <- function(
   mapa,
   xlab,
@@ -17,20 +25,27 @@ plot_moran <- function(
   abs = F)
 {
 
+  #filtragem de observações nulas
   mapa <- mapa[is.na(mapa@data[,column])==F,]
-  
+  #separação da variável de análise
   var <- mapa@data[,column]
+  
+  #caso flag seja TRUE, cálculo do valor absoluto da variável
   if(abs == T){var <- abs(mapa@data[,column])}
   
+  #cálculo do teste de moran 
   morantest <- moran.test(x = as.numeric(var),
                           listw = nb2listw(neighbours = poly2nb(mapa)),alternative = 'two.sided',randomisation = T)
+  #cálculo do moran local para as zonas de análise
   morant <- localmoran(x = as.numeric(var),
                        listw = nb2listw(neighbours = poly2nb(mapa)), alternative = 'two.sided', p.adjust.method = 'holm')
   
-  
+  #padronização da variável de análise
   mapa$varI <- scale(var)
+  #cálculo do lag da variável
   mapa$lag_varI <- lag.listw(nb2listw(neighbours = poly2nb(mapa)), mapa$varI)
   
+  #calculo dos limites do gráfico
   xlim <- ifelse(abs(min(mapa$varI)) < abs(max(mapa$varI)), abs(max(mapa$varI)), abs(min(mapa$varI)))
   ylim <- ifelse(abs(min(mapa$lag_varI)) < abs(max(mapa$lag_varI)), abs(max(mapa$lag_varI)), abs(min(mapa$lag_varI)))
   
@@ -38,6 +53,7 @@ plot_moran <- function(
   xlim <- c(-xlim,xlim)
   ylim <- c(-ylim,ylim)
   
+  #impressão do gráfico de autocorrelação espacial
   plot(x = mapa$varI,
        y = mapa$lag_varI,
        pch = pch,
